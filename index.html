@@ -10,6 +10,8 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Supabase JS Client -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     
     <script>
         tailwind.config = {
@@ -17,24 +19,10 @@
                 extend: {
                     colors: {
                         customGreen: {
-                            50: '#f4f7f4',
-                            100: '#e5ebe5',
-                            200: '#ccd9cc',
-                            300: '#a3bda3',
-                            400: '#759a75',
-                            500: '#537d53',
-                            600: '#3f623f',
-                            700: '#344f34',
-                            850: '#1b321b',
-                            900: '#1c2e1c',
+                            50: '#f4f7f4', 100: '#e5ebe5', 200: '#ccd9cc', 300: '#a3bda3', 400: '#759a75', 500: '#537d53', 600: '#3f623f', 700: '#344f34', 850: '#1b321b', 900: '#1c2e1c',
                         },
                         customCream: {
-                            50: '#fdfbf7',
-                            100: '#fbf7ed',
-                            200: '#f4ebd3',
-                            300: '#e7d6b0',
-                            400: '#d5bd87',
-                            500: '#c1a162',
+                            50: '#fdfbf7', 100: '#fbf7ed', 200: '#f4ebd3', 300: '#e7d6b0', 400: '#d5bd87', 500: '#c1a162',
                         }
                     }
                 }
@@ -94,7 +82,7 @@
                     <div class="w-8 h-8 rounded-lg bg-amber-500 text-slate-950 flex items-center justify-center font-black text-xs">AD</div>
                     <div class="flex flex-col">
                         <span class="text-[11px] font-bold text-customCream-100 leading-none">Administrator</span>
-                        <span class="text-[8px] text-customCream-200 mt-0.5 truncate max-w-[120px]">Batu Lappa Hub</span>
+                        <span class="text-[8px] text-customCream-200 mt-0.5 truncate max-w-[120px]">Batu Lappa Portal</span>
                     </div>
                     <button onclick="prosesLogout()" class="p-1.5 bg-red-600/20 hover:bg-red-600 text-red-200 hover:text-white rounded-lg transition-all ml-1" title="Keluar">
                         <i data-lucide="log-out" class="w-3.5 h-3.5"></i>
@@ -129,7 +117,7 @@
                         <div class="w-8 h-8 rounded-lg bg-amber-500 text-slate-950 flex items-center justify-center font-black text-xs">AD</div>
                         <div class="flex flex-col">
                             <span class="text-xs font-bold text-white">Administrator</span>
-                            <span class="text-[9px] text-customCream-200">Batu Lappa Hub</span>
+                            <span class="text-[9px] text-customCream-200">Batu Lappa Portal</span>
                         </div>
                     </div>
                     <button onclick="prosesLogout()" class="text-xs font-bold text-red-400 hover:text-red-300 flex items-center gap-1">
@@ -149,7 +137,7 @@
                     <h3 class="text-base font-black text-slate-900 tracking-tight flex items-center gap-2">
                         <i data-lucide="shield-alert" class="w-5 h-5 text-customGreen-600"></i> Keamanan Administrator
                     </h3>
-                    <p class="text-[10px] text-slate-400 font-medium">Khusus untuk pengelola portal Kelurahan Batu Lappa.</p>
+                    <p class="text-[10px] text-slate-400 font-medium">Khusus pengelola portal Kelurahan Batu Lappa.</p>
                 </div>
                 <button onclick="tutupModalLogin()" class="p-1 hover:bg-slate-100 rounded-lg text-slate-400"><i data-lucide="x" class="w-5 h-5"></i></button>
             </div>
@@ -157,80 +145,20 @@
                 <div class="space-y-1">
                     <label class="text-[9px] font-extrabold text-slate-500 uppercase tracking-wider block">Username</label>
                     <div class="relative">
-                        <input type="text" id="loginUsername" placeholder="Masukkan username" class="w-full text-xs p-3 pl-10 rounded-xl border border-slate-200 focus:outline-none focus:border-customGreen-500">
+                        <input type="text" id="loginUsername" placeholder="Username" class="w-full text-xs p-3 pl-10 rounded-xl border border-slate-200 focus:outline-none focus:border-customGreen-500">
                         <i data-lucide="user" class="w-4 h-4 text-slate-400 absolute left-3.5 top-3.5"></i>
                     </div>
                 </div>
                 <div class="space-y-1">
                     <label class="text-[9px] font-extrabold text-slate-500 uppercase tracking-wider block">Password</label>
                     <div class="relative">
-                        <input type="password" id="loginPassword" placeholder="Masukkan password" class="w-full text-xs p-3 pl-10 rounded-xl border border-slate-200 focus:outline-none focus:border-customGreen-500">
+                        <input type="password" id="loginPassword" placeholder="Password" class="w-full text-xs p-3 pl-10 rounded-xl border border-slate-200 focus:outline-none focus:border-customGreen-500">
                         <i data-lucide="key-round" class="w-4 h-4 text-slate-400 absolute left-3.5 top-3.5"></i>
                     </div>
                 </div>
             </div>
             <button onclick="prosesAutentikasi()" class="w-full py-3 bg-customGreen-700 hover:bg-customGreen-800 text-white font-bold rounded-xl text-xs transition-all shadow-md">
                 Autentikasi Sekarang
-            </button>
-        </div>
-    </div>
-
-    <!-- MODAL SYARAT SURAT -->
-    <div id="modalSyaratSurat" class="hidden fixed inset-0 z-[100] flex items-center justify-center p-4">
-        <div class="absolute inset-0 bg-slate-950/65 backdrop-blur-sm" onclick="tutupModalSyarat()"></div>
-        <div class="bg-white w-full max-w-lg rounded-3xl p-6 relative z-10 border border-slate-200 shadow-2xl space-y-4 animate-fade-in">
-            <div class="flex justify-between items-start border-b border-slate-100 pb-3">
-                <div class="flex items-center gap-3">
-                    <div class="p-2.5 bg-customGreen-50 text-customGreen-600 rounded-2xl" id="modalSuratIkonBox">
-                        <i data-lucide="file-text" class="w-6 h-6"></i>
-                    </div>
-                    <div>
-                        <h3 class="text-sm font-black text-slate-900" id="modalSuratJudul">Syarat & Cara Pengurusan</h3>
-                        <span class="text-[10px] text-slate-400 font-semibold" id="modalSuratKategori">Kategori Layanan</span>
-                    </div>
-                </div>
-                <button onclick="tutupModalSyarat()" class="p-1 hover:bg-slate-100 rounded-lg text-slate-400"><i data-lucide="x" class="w-5 h-5"></i></button>
-            </div>
-            
-            <div class="space-y-4 max-h-[350px] overflow-y-auto pr-2">
-                <div class="space-y-1.5">
-                    <h4 class="text-xs font-black uppercase text-slate-500 tracking-wider flex items-center gap-1.5">
-                        <i data-lucide="check-circle" class="w-4 h-4 text-emerald-500"></i> Dokumen Yang Harus Dibawa (Persyaratan)
-                    </h4>
-                    <div id="modalSuratSyarat" class="text-xs text-slate-600 leading-relaxed bg-slate-50 p-3 rounded-2xl border border-slate-100 whitespace-pre-line">
-                        Loading...
-                    </div>
-                </div>
-
-                <div class="space-y-1.5">
-                    <h4 class="text-xs font-black uppercase text-slate-500 tracking-wider flex items-center gap-1.5">
-                        <i data-lucide="git-commit" class="w-4 h-4 text-indigo-500"></i> Alur / Cara Pengurusan
-                    </h4>
-                    <div id="modalSuratCara" class="text-xs text-slate-600 leading-relaxed bg-slate-50 p-3 rounded-2xl border border-slate-100 whitespace-pre-line">
-                        Loading...
-                    </div>
-                </div>
-
-                <div class="grid grid-cols-2 gap-3 pt-2">
-                    <div class="p-3 bg-amber-50 rounded-2xl border border-amber-100 flex items-center gap-2.5">
-                        <i data-lucide="hourglass" class="w-5 h-5 text-amber-600"></i>
-                        <div>
-                            <span class="text-[9px] text-amber-700 font-extrabold block uppercase">Proses Kerja</span>
-                            <span class="text-xs font-bold text-slate-800" id="modalSuratEstimasi">1 Hari Kerja</span>
-                        </div>
-                    </div>
-                    <div class="p-3 bg-emerald-50 rounded-2xl border border-emerald-100 flex items-center gap-2.5">
-                        <i data-lucide="coins" class="w-5 h-5 text-emerald-600"></i>
-                        <div>
-                            <span class="text-[9px] text-emerald-700 font-extrabold block uppercase">Biaya / Tarif</span>
-                            <span class="text-xs font-bold text-slate-800">Gratis (Rp 0)</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <button onclick="tutupModalSyarat()" class="w-full py-2.5 bg-customGreen-700 hover:bg-customGreen-800 text-white rounded-xl text-xs font-bold transition-all">
-                Saya Mengerti, Tutup Panduan
             </button>
         </div>
     </div>
@@ -242,48 +170,15 @@
             <!-- TAB 1: BERANDA -->
             <section id="tab-beranda" class="space-y-8 animate-fade-in">
                 <div class="relative rounded-3xl overflow-hidden shadow-xl min-h-[300px] flex flex-col justify-center p-8 md:p-12">
-                    <img id="fotoLatarBelakang" src="" alt="Pemandangan Kelurahan Batu Lappa" class="absolute inset-0 w-full h-full object-cover filter brightness-[0.35]">
-                    <div class="absolute inset-0 opacity-15 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:16px_16px]"></div>
+                    <img id="fotoLatarBelakang" src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=1200" alt="Pemandangan Batu Lappa" class="absolute inset-0 w-full h-full object-cover filter brightness-[0.35]">
                     <div class="relative max-w-2xl space-y-4">
-                        <span class="inline-flex items-center gap-1.5 bg-customCream-300/30 text-customCream-200 text-[10px] font-extrabold uppercase px-3 py-1 rounded-full tracking-wider border border-customCream-300/30">
+                        <span class="inline-flex items-center gap-1.5 bg-customCream-300/30 text-customCream-200 text-[10px] font-extrabold uppercase px-3 py-1 rounded-full border border-customCream-300/30">
                             Portal Resmi Informasi Publik
                         </span>
-                        <h2 class="text-3xl md:text-5xl font-black text-white leading-tight tracking-tight">
-                            <span class="text-customCream-200 text-xl md:text-2xl font-semibold block mb-1" id="greetingWaktu">Selamat Datang,</span>
-                            <span id="txtHeroNama">Kelurahan Batu Lappa</span>
+                        <h2 class="text-3xl md:text-5xl font-black text-white leading-tight">
+                            <span id="txtHeroNama">KELURAHAN BATU LAPPA</span>
                         </h2>
-                        <p class="text-customCream-100/90 text-xs md:text-sm leading-relaxed" id="deskripsiKelurahan">Mewujudkan pelayanan prima yang transparan, tata kelola administrasi responsif, dan pembangunan berkelanjutan bagi seluruh warga.</p>
-                    </div>
-                </div>
-
-                <div class="bg-gradient-to-r from-customGreen-900 to-customGreen-850 text-white rounded-2xl p-4 shadow-md grid grid-cols-2 sm:grid-cols-4 gap-4 items-center border border-customGreen-900">
-                    <div class="flex items-center gap-3 border-r border-customGreen-800 pr-2">
-                        <div class="p-2.5 bg-customGreen-800 text-customCream-300 rounded-xl"><i data-lucide="clock" class="w-5 h-5"></i></div>
-                        <div>
-                            <span class="text-[9px] text-customCream-300 font-bold block uppercase tracking-wider">Waktu Lokal</span>
-                            <span class="text-xs font-extrabold font-mono" id="liveJam">00:00:00 WITA</span>
-                        </div>
-                    </div>
-                    <div class="flex items-center gap-3 sm:border-r border-customGreen-800 pr-2">
-                        <div class="p-2.5 bg-customGreen-800 text-customCream-300 rounded-xl"><i data-lucide="calendar" class="w-5 h-5"></i></div>
-                        <div>
-                            <span class="text-[9px] text-customCream-300 font-bold block uppercase tracking-wider">Hari & Tanggal</span>
-                            <span class="text-xs font-bold" id="liveTanggal">Memuat...</span>
-                        </div>
-                    </div>
-                    <div class="flex items-center gap-3 border-r border-customGreen-800 pr-2">
-                        <div class="p-2.5 bg-customGreen-800 text-customCream-300 rounded-xl"><i data-lucide="cloud-sun" class="w-5 h-5"></i></div>
-                        <div>
-                            <span class="text-[9px] text-customCream-300 font-bold block uppercase tracking-wider">Cuaca</span>
-                            <span class="text-xs font-bold">29°C Cerah</span>
-                        </div>
-                    </div>
-                    <div class="flex items-center gap-3">
-                        <div class="p-2.5 bg-customGreen-800 text-customCream-300 rounded-xl"><i data-lucide="leaf" class="w-5 h-5"></i></div>
-                        <div>
-                            <span class="text-[9px] text-customCream-300 font-bold block uppercase tracking-wider">Indeks Udara</span>
-                            <span class="text-xs font-bold text-emerald-400">Baik (34 AQI)</span>
-                        </div>
+                        <p class="text-customCream-100/90 text-xs md:text-sm leading-relaxed" id="deskripsiKelurahan">Mewujudkan pelayanan prima yang transparan, tata kelola administrasi responsif, dan pembangunan berkelanjutan.</p>
                     </div>
                 </div>
 
@@ -291,7 +186,7 @@
                     <div class="lg:col-span-2 bg-white p-6 rounded-3xl border border-customGreen-100 shadow-sm space-y-4">
                         <h3 class="text-base font-extrabold text-slate-900 flex items-center gap-2">
                             <span class="w-1.5 h-5 bg-customCream-400 rounded-full"></span>
-                            Panduan & Syarat Pengurusan Administrasi (Pilih Surat)
+                            Panduan & Syarat Layanan Publik
                         </h3>
                         <div id="kontainer-layanan-surat" class="grid grid-cols-1 sm:grid-cols-2 gap-4"></div>
                     </div>
@@ -301,34 +196,14 @@
                             <h3 class="text-sm font-black text-slate-900 flex items-center gap-2">
                                 <i data-lucide="send" class="w-4 h-4 text-customGreen-600"></i> Layanan Pengaduan Warga
                             </h3>
-                            <p class="text-[10px] text-slate-400">Ajukan keluhan infrastruktur, pelayanan, atau keamanan.</p>
+                            <p class="text-[10px] text-slate-400">Ajukan keluhan infrastruktur atau pelayanan.</p>
                         </div>
                         
                         <div class="space-y-2.5">
-                            <div class="space-y-0.5">
-                                <label class="text-[9px] font-bold text-slate-500 uppercase">Nama Lengkap / Anonim</label>
-                                <input type="text" id="aduanNama" placeholder="Nama Anda (Bisa Anonim)" class="w-full text-xs p-2.5 rounded-xl border border-slate-200 focus:outline-none focus:border-customGreen-500">
-                            </div>
-                            <div class="space-y-0.5">
-                                <label class="text-[9px] font-bold text-slate-500 uppercase">Nomor HP (WhatsApp)</label>
-                                <input type="text" id="aduanKontak" placeholder="08123xxxxxx" class="w-full text-xs p-2.5 rounded-xl border border-slate-200 focus:outline-none focus:border-customGreen-500">
-                            </div>
-                            <div class="space-y-0.5">
-                                <label class="text-[9px] font-bold text-slate-500 uppercase">Jenis Keluhan</label>
-                                <select id="aduanKategori" class="w-full text-xs p-2.5 rounded-xl border border-slate-200 focus:outline-none focus:border-customGreen-500">
-                                    <option value="Infrastruktur / Jalan">Infrastruktur & Jalan</option>
-                                    <option value="Pelayanan Kantor Kelurahan">Pelayanan Staf Kantor</option>
-                                    <option value="Keamanan / Ketertiban">Keamanan & Ketertiban</option>
-                                    <option value="Lainnya">Lainnya</option>
-                                </select>
-                            </div>
-                            <div class="space-y-0.5">
-                                <label class="text-[9px] font-bold text-slate-500 uppercase">Isi Laporan Pengaduan</label>
-                                <textarea id="aduanIsi" rows="3" placeholder="Tulis rincian kejadian atau keluhan di sini..." class="w-full text-xs p-2.5 rounded-xl border border-slate-200 focus:outline-none focus:border-customGreen-500"></textarea>
-                            </div>
-                            <button onclick="kirimPengaduanPublik()" class="w-full py-2.5 bg-customGreen-700 hover:bg-customGreen-800 text-white rounded-xl text-xs font-bold transition-all shadow-sm">
-                                Kirim Laporan Aduan
-                            </button>
+                            <input type="text" id="aduanNama" placeholder="Nama Anda (Opsional)" class="w-full text-xs p-2.5 rounded-xl border border-slate-200 focus:outline-none focus:border-customGreen-500">
+                            <input type="text" id="aduanKontak" placeholder="Nomor HP / WhatsApp" class="w-full text-xs p-2.5 rounded-xl border border-slate-200 focus:outline-none focus:border-customGreen-500">
+                            <textarea id="aduanIsi" rows="3" placeholder="Tuliskan isi pengaduan Anda..." class="w-full text-xs p-2.5 rounded-xl border border-slate-200 focus:outline-none focus:border-customGreen-500"></textarea>
+                            <button onclick="kirimPengaduanPublik()" class="w-full py-2.5 bg-customGreen-700 hover:bg-customGreen-800 text-white rounded-xl text-xs font-bold transition-all shadow-sm">Kirim Laporan Aduan</button>
                         </div>
                     </div>
                 </div>
@@ -337,842 +212,314 @@
             <!-- TAB 2: PROFIL -->
             <section id="tab-profil" class="hidden space-y-8 animate-fade-in">
                 <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
-                    <div class="bg-gradient-to-br from-customGreen-600 to-customGreen-700 text-white p-5 rounded-2xl shadow-sm flex items-center justify-between border border-customGreen-500/20">
-                        <div class="space-y-1">
-                            <span class="text-[10px] font-extrabold uppercase tracking-wider opacity-85">Total Penduduk</span>
-                            <h4 class="text-2xl font-black tracking-tight"><span id="txtPenduduk">4.738</span> <span class="text-xs font-medium opacity-90">Jiwa</span></h4>
-                        </div>
-                        <div class="p-3 bg-white/10 rounded-xl backdrop-blur-md"><i data-lucide="users" class="w-6 h-6 text-white"></i></div>
+                    <div class="bg-gradient-to-br from-customGreen-600 to-customGreen-700 text-white p-5 rounded-2xl shadow-sm flex items-center justify-between">
+                        <div><span class="text-[10px] font-extrabold uppercase opacity-85">Total Penduduk</span><h4 class="text-2xl font-black"><span id="txtPenduduk">4.738</span> <span class="text-xs font-normal">Jiwa</span></h4></div>
+                        <i data-lucide="users" class="w-6 h-6 opacity-80"></i>
                     </div>
-                    <div class="bg-gradient-to-br from-emerald-600 to-emerald-700 text-white p-5 rounded-2xl shadow-sm flex items-center justify-between border border-emerald-500/20">
-                        <div class="space-y-1">
-                            <span class="text-[10px] font-extrabold uppercase tracking-wider opacity-85">Kepala Keluarga</span>
-                            <h4 class="text-2xl font-black tracking-tight"><span id="txtKK">1.284</span> <span class="text-xs font-medium opacity-90">KK</span></h4>
-                        </div>
-                        <div class="p-3 bg-white/10 rounded-xl backdrop-blur-md"><i data-lucide="home" class="w-6 h-6 text-white"></i></div>
+                    <div class="bg-gradient-to-br from-emerald-600 to-emerald-700 text-white p-5 rounded-2xl shadow-sm flex items-center justify-between">
+                        <div><span class="text-[10px] font-extrabold uppercase opacity-85">Kepala Keluarga</span><h4 class="text-2xl font-black"><span id="txtKK">1.284</span> <span class="text-xs font-normal">KK</span></h4></div>
+                        <i data-lucide="home" class="w-6 h-6 opacity-80"></i>
                     </div>
-                    <div class="bg-gradient-to-br from-customGreen-500 to-customGreen-600 text-white p-5 rounded-2xl shadow-sm flex items-center justify-between border border-customGreen-400/20">
-                        <div class="space-y-1">
-                            <span class="text-[10px] font-extrabold uppercase tracking-wider opacity-85">Laki-Laki</span>
-                            <h4 class="text-2xl font-black tracking-tight"><span id="txtLaki">2.312</span> <span class="text-xs font-medium opacity-90">Jiwa</span></h4>
-                        </div>
-                        <div class="p-3 bg-white/10 rounded-xl backdrop-blur-md"><i data-lucide="user" class="w-6 h-6 text-white"></i></div>
+                    <div class="bg-gradient-to-br from-customGreen-500 to-customGreen-600 text-white p-5 rounded-2xl shadow-sm flex items-center justify-between">
+                        <div><span class="text-[10px] font-extrabold uppercase opacity-85">Laki-Laki</span><h4 class="text-2xl font-black"><span id="txtLaki">2.312</span> <span class="text-xs font-normal">Jiwa</span></h4></div>
+                        <i data-lucide="user" class="w-6 h-6 opacity-80"></i>
                     </div>
-                    <div class="bg-gradient-to-br from-customCream-400 to-customCream-500 text-slate-900 p-5 rounded-2xl shadow-sm flex items-center justify-between border border-customCream-300/20">
-                        <div class="space-y-1">
-                            <span class="text-[10px] font-extrabold uppercase tracking-wider opacity-85">Perempuan</span>
-                            <h4 class="text-2xl font-black tracking-tight"><span id="txtPerempuan">2.426</span> <span class="text-xs font-medium opacity-90">Jiwa</span></h4>
-                        </div>
-                        <div class="p-3 bg-slate-900/10 rounded-xl backdrop-blur-md"><i data-lucide="user-check" class="w-6 h-6 text-slate-900"></i></div>
+                    <div class="bg-gradient-to-br from-customCream-400 to-customCream-500 text-slate-900 p-5 rounded-2xl shadow-sm flex items-center justify-between">
+                        <div><span class="text-[10px] font-extrabold uppercase opacity-85">Perempuan</span><h4 class="text-2xl font-black"><span id="txtPerempuan">2.426</span> <span class="text-xs font-normal">Jiwa</span></h4></div>
+                        <i data-lucide="user-check" class="w-6 h-6 opacity-80"></i>
                     </div>
                 </div>
 
-                <div class="bg-white p-6 rounded-3xl border border-customGreen-100 shadow-sm space-y-6">
-                    <div class="text-center max-w-md mx-auto space-y-1">
-                        <h3 class="text-base font-black text-slate-900 tracking-tight uppercase flex items-center justify-center gap-2">
-                            <i data-lucide="shield-check" class="w-5 h-5 text-customGreen-600"></i> Pemerintah Kelurahan
-                        </h3>
-                        <p class="text-[11px] text-slate-400 font-medium">Struktur Organisasi Pelaksana Pelayanan Publik Kelurahan</p>
+                <div class="bg-white p-6 rounded-3xl border border-customGreen-100 shadow-sm space-y-6 text-center">
+                    <h3 class="text-base font-black text-slate-900 uppercase">Struktur Organisasi Kelurahan</h3>
+                    <div class="max-w-2xl mx-auto rounded-2xl overflow-hidden border bg-slate-50 p-2">
+                        <img id="fotoStruktur" src="https://images.unsplash.com/photo-1531538606174-0f90ff5dce83?q=80&w=800" class="w-full h-auto rounded-xl object-cover">
                     </div>
-
-                    <div class="space-y-6">
-                        <div class="max-w-xl mx-auto rounded-2xl overflow-hidden border border-slate-200 bg-slate-50 p-2">
-                            <img id="fotoStruktur" src="" alt="Bagan Struktur Organisasi" class="w-full h-auto rounded-xl object-cover aspect-[16/9] hover:scale-[1.02] transition-transform duration-300">
-                        </div>
-                        <div class="flex justify-center mt-6">
-                            <div class="bg-customCream-50 border-2 border-customGreen-600 p-4 rounded-2xl text-center shadow-sm w-full max-w-[240px] relative">
-                                <h5 class="text-xs font-black text-slate-900 leading-tight" id="namaLurah">M. AMIN, S.Sos</h5>
-                                <span class="inline-block mt-1 text-[9px] bg-customGreen-600 text-white font-extrabold uppercase px-2 py-0.5 rounded-md">Lurah Batu Lappa</span>
-                            </div>
-                        </div>
+                    <div class="inline-block bg-customCream-50 border-2 border-customGreen-600 px-6 py-3 rounded-2xl">
+                        <h5 class="text-xs font-black text-slate-900" id="namaLurah">M. AMIN, S.Sos</h5>
+                        <span class="text-[9px] bg-customGreen-600 text-white px-2 py-0.5 rounded font-extrabold uppercase">Lurah Batu Lappa</span>
                     </div>
                 </div>
             </section>
 
             <!-- TAB 3: BERITA -->
             <section id="tab-berita" class="hidden space-y-6 animate-fade-in">
-                <div class="flex justify-between items-center">
-                    <h3 class="text-base font-extrabold text-slate-900 flex items-center gap-2">
-                        <span class="w-1.5 h-5 bg-customGreen-600 rounded-full"></span> Portal Berita Terkini
-                    </h3>
-                </div>
+                <h3 class="text-base font-extrabold text-slate-900">Portal Berita Terkini</h3>
                 <div id="kontainer-berita" class="grid grid-cols-1 md:grid-cols-3 gap-6"></div>
             </section>
 
             <!-- TAB 4: PEMBANGUNAN -->
             <section id="tab-pembangunan" class="hidden space-y-6 animate-fade-in">
-                <h3 class="text-base font-extrabold text-slate-900 flex items-center gap-2">
-                    <span class="w-1.5 h-5 bg-customGreen-600 rounded-full"></span> Realisasi & Progress Pembangunan Wilayah
-                </h3>
+                <h3 class="text-base font-extrabold text-slate-900">Progress Pembangunan Wilayah</h3>
                 <div id="kontainer-pembangunan" class="grid grid-cols-1 md:grid-cols-2 gap-6"></div>
             </section>
 
-            <!-- TAB 5: PANEL ADMIN (CMS UTAMA OPERATOR) -->
+            <!-- TAB 5: PANEL ADMIN -->
             <section id="tab-panel-admin" class="hidden space-y-8 animate-fade-in">
-                <div class="p-6 bg-amber-50 rounded-3xl border border-amber-200 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-                    <div class="flex items-center gap-2.5 text-amber-900">
-                        <i data-lucide="lock" class="w-6 h-6"></i>
-                        <div>
-                            <h3 class="text-base font-black uppercase tracking-wide leading-none">Ruang Kelola Admin Kelurahan</h3>
-                            <span class="text-[10px] text-amber-800 font-semibold block mt-1">Upload foto & ubah data langsung memperbarui seluruh tampilan publik di internet.</span>
-                        </div>
+                <div class="p-6 bg-amber-50 rounded-3xl border border-amber-200 flex items-center gap-3">
+                    <i data-lucide="database" class="w-6 h-6 text-amber-700"></i>
+                    <div>
+                        <h3 class="text-base font-black text-amber-900">Panel Kelola Admin (Database Terpusat)</h3>
+                        <p class="text-[10px] text-amber-800">Setiap tombol simpan akan memperbarui data untuk seluruh HP warga secara real-time.</p>
                     </div>
                 </div>
 
-                <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
-                    <div class="flex flex-col gap-1 bg-white p-4 rounded-2xl border border-slate-200 shadow-sm h-fit">
-                        <span class="text-[9px] font-black text-slate-400 uppercase tracking-wider px-3 mb-2 block">Kategori Kelola</span>
-                        <button onclick="setAdminSubTab('profil')" id="btn-adm-profil" class="text-left text-xs font-bold px-3 py-2.5 rounded-xl transition-all bg-customGreen-50 text-customGreen-700">Profil & Statistik</button>
-                        <button onclick="setAdminSubTab('surat')" id="btn-adm-surat" class="text-left text-xs font-bold px-3 py-2.5 rounded-xl transition-all text-slate-600 hover:bg-slate-50">Layanan Surat</button>
-                        <button onclick="setAdminSubTab('berita')" id="btn-adm-berita" class="text-left text-xs font-bold px-3 py-2.5 rounded-xl transition-all text-slate-600 hover:bg-slate-50">Kabar & Berita</button>
-                        <button onclick="setAdminSubTab('pembangunan')" id="btn-adm-pembangunan" class="text-left text-xs font-bold px-3 py-2.5 rounded-xl transition-all text-slate-600 hover:bg-slate-50">Proyek Pembangunan</button>
-                        <button onclick="setAdminSubTab('pengaduan')" id="btn-adm-pengaduan" class="text-left text-xs font-bold px-3 py-2.5 rounded-xl transition-all text-slate-600 hover:bg-slate-50 flex items-center justify-between">
-                            <span>Keluhan Warga</span>
-                            <span id="badgeAduan" class="bg-red-500 text-white text-[8px] font-black px-1.5 py-0.5 rounded-full hidden">0</span>
-                        </button>
-                    </div>
-
-                    <div class="lg:col-span-3 space-y-6">
-                        <!-- Profil Form -->
-                        <div id="adm-sec-profil" class="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm space-y-4">
-                            <h4 class="text-sm font-black text-slate-800 border-b pb-2 flex items-center gap-1.5"><i data-lucide="edit-3" class="w-4 h-4 text-customGreen-500"></i> Edit Identitas & Upload Foto Website Publik</h4>
-                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                <div class="space-y-1">
-                                    <label class="text-[9px] font-bold text-slate-500 uppercase">Nama Kelurahan</label>
-                                    <input type="text" id="inpNamaKel" class="w-full text-xs p-2.5 rounded-xl border border-slate-200">
-                                </div>
-                                <div class="space-y-1">
-                                    <label class="text-[9px] font-bold text-slate-500 uppercase">Nama Lurah</label>
-                                    <input type="text" id="inpNamaLurah" class="w-full text-xs p-2.5 rounded-xl border border-slate-200">
-                                </div>
-                                <div class="sm:col-span-2 space-y-1">
-                                    <label class="text-[9px] font-bold text-slate-500 uppercase">Deskripsi / Visi Misi Utama</label>
-                                    <textarea id="inpDesc" rows="2" class="w-full text-xs p-2.5 rounded-xl border border-slate-200"></textarea>
-                                </div>
-                                <div class="space-y-1">
-                                    <label class="text-[9px] font-bold text-slate-500 uppercase">Upload Foto Latar Belakang (Langsung Publik)</label>
-                                    <input type="file" id="inpFotoLatar" accept="image/*" class="w-full text-xs p-1.5 rounded-xl border border-slate-200">
-                                </div>
-                                <div class="space-y-1">
-                                    <label class="text-[9px] font-bold text-slate-500 uppercase">Upload Foto Struktur Organisasi (Langsung Publik)</label>
-                                    <input type="file" id="inpFotoStruktur" accept="image/*" class="w-full text-xs p-1.5 rounded-xl border border-slate-200">
-                                </div>
-                                <div class="border-t sm:col-span-2 my-1"></div>
-                                <div class="space-y-1"><label class="text-[9px] font-bold text-slate-500 uppercase">Total Penduduk (Jiwa)</label><input type="text" id="inpPenduduk" class="w-full text-xs p-2.5 rounded-xl border border-slate-200"></div>
-                                <div class="space-y-1"><label class="text-[9px] font-bold text-slate-500 uppercase">Total KK</label><input type="text" id="inpKK" class="w-full text-xs p-2.5 rounded-xl border border-slate-200"></div>
-                                <div class="space-y-1"><label class="text-[9px] font-bold text-slate-500 uppercase">Laki-Laki (Jiwa)</label><input type="text" id="inpLaki" class="w-full text-xs p-2.5 rounded-xl border border-slate-200"></div>
-                                <div class="space-y-1"><label class="text-[9px] font-bold text-slate-500 uppercase">Perempuan (Jiwa)</label><input type="text" id="inpPerempuan" class="w-full text-xs p-2.5 rounded-xl border border-slate-200"></div>
-                            </div>
-                            <button onclick="simpanProfilAdmin()" id="btnSimpanProfil" class="px-5 py-2.5 bg-customGreen-700 hover:bg-customGreen-800 text-white rounded-xl text-xs font-bold shadow-md transition-all">Simpan Perubahan Publik</button>
-                        </div>
-
-                        <!-- Surat Form -->
-                        <div id="adm-sec-surat" class="hidden bg-white p-6 rounded-3xl border border-slate-200 shadow-sm space-y-4">
-                            <h4 class="text-sm font-black text-slate-800 border-b pb-2 flex items-center gap-1.5"><i data-lucide="file-text" class="w-4 h-4 text-customGreen-500"></i> Kelola Layanan Surat</h4>
-                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 bg-slate-50 p-4 rounded-2xl border border-slate-100">
-                                <div class="space-y-1"><label class="text-[9px] font-bold text-slate-500 uppercase">Nama Surat</label><input type="text" id="formSuratJudul" class="w-full text-xs p-2.5 rounded-xl border border-slate-200"></div>
-                                <div class="space-y-1"><label class="text-[9px] font-bold text-slate-500 uppercase">Kategori</label><input type="text" id="formSuratKat" class="w-full text-xs p-2.5 rounded-xl border border-slate-200"></div>
-                                <div class="space-y-1 sm:col-span-2"><label class="text-[9px] font-bold text-slate-500 uppercase">Persyaratan</label><textarea id="formSuratSyarat" rows="2" class="w-full text-xs p-2.5 rounded-xl border border-slate-200"></textarea></div>
-                                <div class="space-y-1 sm:col-span-2"><label class="text-[9px] font-bold text-slate-500 uppercase">Alur Pengurusan</label><textarea id="formSuratAlur" rows="2" class="w-full text-xs p-2.5 rounded-xl border border-slate-200"></textarea></div>
-                                <div class="space-y-1"><label class="text-[9px] font-bold text-slate-500 uppercase">Estimasi Waktu</label><input type="text" id="formSuratWaktu" placeholder="1 Hari Kerja" class="w-full text-xs p-2.5 rounded-xl border border-slate-200"></div>
-                                <div class="space-y-1 flex items-end"><button onclick="tambahSuratAdmin()" class="w-full py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-bold">Simpan Surat</button></div>
-                            </div>
-                            <div id="adminListSurat" class="divide-y border rounded-2xl overflow-hidden"></div>
-                        </div>
-
-                        <!-- Berita Form -->
-                        <div id="adm-sec-berita" class="hidden bg-white p-6 rounded-3xl border border-slate-200 shadow-sm space-y-4">
-                            <h4 class="text-sm font-black text-slate-800 border-b pb-2 flex items-center gap-1.5"><i data-lucide="newspaper" class="w-4 h-4 text-customGreen-500"></i> Terbitkan Berita Baru</h4>
-                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 bg-slate-50 p-4 rounded-2xl border border-slate-100">
-                                <div class="space-y-1 sm:col-span-2"><label class="text-[9px] font-bold text-slate-500 uppercase">Judul Berita</label><input type="text" id="formBeritaJudul" class="w-full text-xs p-2.5 rounded-xl border border-slate-200"></div>
-                                <div class="space-y-1"><label class="text-[9px] font-bold text-slate-500 uppercase">Kategori</label><input type="text" id="formBeritaKat" class="w-full text-xs p-2.5 rounded-xl border border-slate-200"></div>
-                                <div class="space-y-1"><label class="text-[9px] font-bold text-slate-500 uppercase">Upload Foto Berita</label><input type="file" id="formBeritaImg" accept="image/*" class="w-full text-xs p-1.5 rounded-xl border border-slate-200"></div>
-                                <div class="space-y-1 sm:col-span-2"><label class="text-[9px] font-bold text-slate-500 uppercase">Isi Berita</label><textarea id="formBeritaIsi" rows="3" class="w-full text-xs p-2.5 rounded-xl border border-slate-200"></textarea></div>
-                                <div class="sm:col-span-2 flex justify-end"><button onclick="terbitBeritaAdmin()" class="px-5 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-bold">Terbitkan Berita</button></div>
-                            </div>
-                            <div id="adminListBerita" class="divide-y border rounded-2xl overflow-hidden"></div>
-                        </div>
-
-                        <!-- Pembangunan Form -->
-                        <div id="adm-sec-pembangunan" class="hidden bg-white p-6 rounded-3xl border border-slate-200 shadow-sm space-y-4">
-                            <h4 class="text-sm font-black text-slate-800 border-b pb-2 flex items-center gap-1.5"><i data-lucide="activity" class="w-4 h-4 text-customGreen-500"></i> Progres Pembangunan</h4>
-                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 bg-slate-50 p-4 rounded-2xl border border-slate-100">
-                                <div class="space-y-1"><label class="text-[9px] font-bold text-slate-500 uppercase">Nama Proyek</label><input type="text" id="formPemNama" class="w-full text-xs p-2.5 rounded-xl border border-slate-200"></div>
-                                <div class="space-y-1"><label class="text-[9px] font-bold text-slate-500 uppercase">Sumber Anggaran</label><input type="text" id="formPemKat" class="w-full text-xs p-2.5 rounded-xl border border-slate-200"></div>
-                                <div class="space-y-1"><label class="text-[9px] font-bold text-slate-500 uppercase">Lokasi</label><input type="text" id="formPemLokasi" class="w-full text-xs p-2.5 rounded-xl border border-slate-200"></div>
-                                <div class="space-y-1"><label class="text-[9px] font-bold text-slate-500 uppercase">Progres (%)</label><input type="number" id="formPemPersen" class="w-full text-xs p-2.5 rounded-xl border border-slate-200"></div>
-                                <div class="space-y-1 sm:col-span-2"><label class="text-[9px] font-bold text-slate-500 uppercase">Upload Foto Progres</label><input type="file" id="formPemImg" accept="image/*" class="w-full text-xs p-1.5 rounded-xl border border-slate-200"></div>
-                                <div class="sm:col-span-2 flex justify-end"><button onclick="tambahPembangunanAdmin()" class="px-5 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-bold">Simpan Progres</button></div>
-                            </div>
-                            <div id="adminListPem" class="divide-y border rounded-2xl overflow-hidden"></div>
-                        </div>
-
-                        <!-- Pengaduan List -->
-                        <div id="adm-sec-pengaduan" class="hidden bg-white p-6 rounded-3xl border border-slate-200 shadow-sm space-y-4">
-                            <div class="flex justify-between items-center border-b pb-2">
-                                <h4 class="text-sm font-black text-slate-800 flex items-center gap-1.5"><i data-lucide="inbox" class="w-4 h-4 text-customGreen-500"></i> Laporan Pengaduan Masuk</h4>
-                                <button onclick="bersihkanSemuaAduan()" class="text-[10px] font-bold text-red-600 hover:underline">Hapus Semua</button>
-                            </div>
-                            <div id="adminListAduan" class="space-y-3 max-h-[500px] overflow-y-auto pr-2"></div>
+                <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm space-y-4 max-w-2xl mx-auto">
+                    <h4 class="text-sm font-black border-b pb-2 flex items-center gap-2"><i data-lucide="edit-3" class="w-4 h-4 text-customGreen-600"></i> Edit Identitas & Statistik</h4>
+                    <div class="space-y-3 text-xs">
+                        <div><label class="font-bold text-slate-600 block mb-1">Nama Kelurahan</label><input type="text" id="inpNamaKel" class="w-full p-2.5 border rounded-xl"></div>
+                        <div><label class="font-bold text-slate-600 block mb-1">Nama Lurah</label><input type="text" id="inpNamaLurah" class="w-full p-2.5 border rounded-xl"></div>
+                        <div><label class="font-bold text-slate-600 block mb-1">Deskripsi Utama</label><textarea id="inpDesc" rows="2" class="w-full p-2.5 border rounded-xl"></textarea></div>
+                        <div><label class="font-bold text-slate-600 block mb-1">URL Foto Latar Belakang</label><input type="text" id="inpFotoLatar" placeholder="https://..." class="w-full p-2.5 border rounded-xl"></div>
+                        <div><label class="font-bold text-slate-600 block mb-1">URL Foto Struktur Organisasi</label><input type="text" id="inpFotoStruktur" placeholder="https://..." class="w-full p-2.5 border rounded-xl"></div>
+                        <div class="grid grid-cols-2 gap-3 pt-2">
+                            <div><label class="font-bold text-slate-600 block mb-1">Total Penduduk</label><input type="text" id="inpPenduduk" class="w-full p-2.5 border rounded-xl"></div>
+                            <div><label class="font-bold text-slate-600 block mb-1">Total KK</label><input type="text" id="inpKK" class="w-full p-2.5 border rounded-xl"></div>
+                            <div><label class="font-bold text-slate-600 block mb-1">Laki-Laki</label><input type="text" id="inpLaki" class="w-full p-2.5 border rounded-xl"></div>
+                            <div><label class="font-bold text-slate-600 block mb-1">Perempuan</label><input type="text" id="inpPerempuan" class="w-full p-2.5 border rounded-xl"></div>
                         </div>
                     </div>
+                    <button onclick="simpanProfilAdmin()" id="btnSimpanProfil" class="w-full py-3 bg-customGreen-700 hover:bg-customGreen-800 text-white rounded-xl font-bold text-xs shadow-md transition-all">Simpan Perubahan Ke Seluruh Warga</button>
                 </div>
             </section>
         </div>
     </main>
 
-    <div id="panelToast" class="fixed bottom-6 right-6 z-[200] max-w-sm bg-slate-900 text-white text-xs px-4 py-3 rounded-2xl shadow-2xl border border-slate-800 flex items-center gap-2.5 transition-all duration-300 transform translate-y-20 opacity-0 pointer-events-none">
-        <i data-lucide="info" class="w-4 h-4 text-amber-400" id="toastIkon"></i>
-        <span id="toastTeks">Pesan notifikasi dimuat!</span>
+    <!-- TOAST NOTIFIKASI -->
+    <div id="panelToast" class="fixed bottom-6 right-6 z-[200] max-w-sm bg-slate-900 text-white text-xs px-4 py-3 rounded-2xl shadow-2xl transition-all duration-300 transform translate-y-20 opacity-0 pointer-events-none">
+        <span id="toastTeks">Notifikasi...</span>
     </div>
 
-    <footer class="bg-customGreen-900 text-white/70 py-4 border-t border-customGreen-850 flex-none text-center">
-        <div class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-2 text-xs">
-            <div>© 2026 Pemerintah Kabupaten Enrekang - Kelurahan Batu Lappa.</div>
-            <div class="text-[10px] text-customCream-300/60 font-medium">Dirancang Secara Profesional untuk Transparansi Pelayanan Publik.</div>
-        </div>
-    </footer>
-
-    <!-- LOGIKA SCRIPT INTEGRASI CLOUDINARY + GOOGLE SHEET -->
+    <!-- LOGIKA SCRIPT INTEGRASI SUPABASE DATABASE -->
     <script>
         // =========================================================================
-        // KUNCI INTEGRASI UTAMA (GANTI DENGAN KUNCI CLOUDINARY KAMU):
+        // TEMPELKAN KUNCI SUPABASE KAMU DI SINI:
         // =========================================================================
-        const CLOUDINARY_CLOUD_NAME = "q5nx4lxu";       // Contoh: "batulappa"
-        const CLOUDINARY_UPLOAD_PRESET = "preset_batulappa";         // Contoh: "preset_batulappa"
-        const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbz2sC3suFO22-c3UbNuAqbEZDWdGtOTCJEY4Ra-nPHZBtgmrr4lAObQElPHjHsDw7kn/exec";
+        const SUPABASE_URL = "https://oxaoslumwfkrqsiusgvc.supabase.co/rest/v1/";
+        const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im94YW9zbHVtd2ZrcnFzaXVzZ3ZjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODQ2MjQ3NjIsImV4cCI6MjEwMDIwMDc2Mn0.RTuxjt6YD-D1tUf3zuoX9PhL7JhQBMjjgKifNvZZH2k";
 
-        const defaultProfil = {
-            nama: "KELURAHAN BATU LAPPA",
-            lurah: "M. AMIN, S.Sos",
-            desc: "Mewujudkan pelayanan prima yang transparan, tata kelola administrasi responsif, dan pembangunan berkelanjutan bagi seluruh warga.",
-            fotoLatar: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=1200&auto=format&fit=crop",
-            fotoStruktur: "https://images.unsplash.com/photo-1531538606174-0f90ff5dce83?q=80&w=800&auto=format&fit=crop",
-            penduduk: "4.738", kk: "1.284", laki: "2.312", perempuan: "2.426"
+        // Inisialisasi Supabase Client
+        let dbClient = null;
+        if (SUPABASE_URL && !SUPABASE_URL.includes("PASANG_PROJECT_URL")) {
+            const { createClient } = supabase;
+            dbClient = createClient(SUPABASE_URL, SUPABASE_KEY);
+        }
+
+        // DATABASE DEFAULT
+        const defaultDatabase = {
+            profil: {
+                nama: "KELURAHAN BATU LAPPA",
+                lurah: "M. AMIN, S.Sos",
+                desc: "Mewujudkan pelayanan prima yang transparan, tata kelola administrasi responsif, dan pembangunan berkelanjutan.",
+                fotoLatar: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=1200",
+                fotoStruktur: "https://images.unsplash.com/photo-1531538606174-0f90ff5dce83?q=80&w=800",
+                penduduk: "4.738", kk: "1.284", laki: "2.312", perempuan: "2.426"
+            },
+            surat: [
+                { id: 1, judul: "Surat Pengantar RT / RW", kategori: "Kependudukan" },
+                { id: 2, judul: "Surat Keterangan Usaha (SKU)", kategori: "Perizinan" }
+            ],
+            berita: [
+                { id: 1, judul: "Musrenbang Kelurahan Batu Lappa Berlangsung Sukses", kategori: "Kegiatan", img: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=800", tanggal: "12 Juli 2026", isi: "Seluruh elemen masyarakat menghadiri Musrenbang tahunan." }
+            ],
+            pembangunan: [
+                { id: 1, nama: "Semenisasi Jalan Tani", kategori: "APBD 2026", lokasi: "Batu Lappa Tengah", persen: 85, img: "https://images.unsplash.com/photo-1590069261209-f8e9b8642343?q=80&w=800" }
+            ],
+            pengaduan: []
         };
 
-        const defaultSurat = [
-            { id: 1, judul: "Surat Pengantar RT / RW", kategori: "Kependudukan", syarat: "- KK\n- KTP", alur: "1. Ke RT/RW\n2. Ke Kelurahan", estimasi: "1 Hari Kerja" }
-        ];
-        const defaultBerita = [
-            { id: 1, judul: "Musrenbang Kelurahan Batu Lappa Sukses Digelar", kategori: "Kegiatan", img: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=800", tanggal: "12 Juli 2026", isi: "Seluruh elemen masyarakat menghadiri Musrenbang." }
-        ];
-        const defaultPembangunan = [
-            { id: 1, nama: "Semenisasi Jalan Tani", kategori: "APBD 2026", lokasi: "Batu Lappa Tengah", persen: 85, img: "https://images.unsplash.com/photo-1590069261209-f8e9b8642343?q=80&w=800" }
-        ];
+        let dbMaster = defaultDatabase;
 
-        let dbProfil = JSON.parse(localStorage.getItem('bl_profil')) || defaultProfil;
-        let dbSurat = JSON.parse(localStorage.getItem('bl_surat')) || defaultSurat;
-        let dbBerita = JSON.parse(localStorage.getItem('bl_berita')) || defaultBerita;
-        let dbPembangunan = JSON.parse(localStorage.getItem('bl_pembangunan')) || defaultPembangunan;
-        let dbPengaduan = JSON.parse(localStorage.getItem('bl_pengaduan')) || [];
-
-        window.addEventListener('DOMContentLoaded', () => {
-            perbaruiSemuaData();
-            updateWaktu();
-            setInterval(updateWaktu, 1000);
-            muatAduanDariGoogleForm();
+        window.addEventListener('DOMContentLoaded', async () => {
+            await muatDataDariDatabasePusat();
             lucide.createIcons();
-            
-            if(sessionStorage.getItem('session_admin') === 'true') {
-                aktifkanModeAdmin();
-            } else {
-                document.getElementById('tab-panel-admin').classList.add('hidden');
-            }
+            if(sessionStorage.getItem('session_admin') === 'true') aktifkanModeAdmin();
         });
 
-        // FUNGSI UPLOAD GAMBAR LANGSUNG KE CLOUD (PUBLIC)
-        async function uploadGambarKeCloud(fileInputEl) {
-            const file = fileInputEl.files[0];
-            if (!file) return null;
-
-            if (CLOUDINARY_CLOUD_NAME === "NAMA_CLOUD_KAMU") {
-                tampilToast('Peringatan: Cloudinary belum diatur, menggunakan file lokal.', 'info');
-                return new Promise((resolve) => {
-                    const reader = new FileReader();
-                    reader.onload = (e) => resolve(e.target.result);
-                    reader.readAsDataURL(file);
-                });
-            }
-
-            tampilToast('Sedang mengunggah foto ke server cloud publik...', 'info');
-
-            const formData = new FormData();
-            formData.append('file', file);
-            formData.append('upload_preset', CLOUDINARY_UPLOAD_PRESET);
-
-            try {
-                const res = await fetch(`https://api.cloudinary.com/v1_1/${CLOUDINARY_CLOUD_NAME}/image/upload`, {
-                    method: 'POST',
-                    body: formData
-                });
-                const data = await res.json();
-                if (data.secure_url) {
-                    tampilToast('Foto berhasil terunggah secara publik!', 'success');
-                    return data.secure_url;
-                } else {
-                    throw new Error('Gagal upload');
-                }
-            } catch (err) {
-                tampilToast('Gagal upload foto, pastikan koneksi internet stabil.', 'error');
-                return null;
-            }
-        }
-
-        async function muatAduanDariGoogleForm() {
-            if (!GOOGLE_SCRIPT_URL || GOOGLE_SCRIPT_URL.includes("PASANG_URL_WEB_APP")) return;
-            try {
-                const respon = await fetch(GOOGLE_SCRIPT_URL);
-                const dataAduanSheet = await respon.json();
-                if (Array.isArray(dataAduanSheet) && dataAduanSheet.length > 0) {
-                    dbPengaduan = dataAduanSheet;
-                    localStorage.setItem('bl_pengaduan', JSON.stringify(dbPengaduan));
-                    perbaruiSemuaData();
-                    renderListAduanAdmin();
-                }
-            } catch (error) {
-                console.log("Menggunakan data aduan lokal.");
-            }
-        }
-
-        function updateWaktu() {
-            const sekarang = new Date();
-            const opsiWaktu = { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false, timeZone: 'Asia/Makassar' };
-            const opsiTanggal = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-            
-            document.getElementById('liveJam').innerText = sekarang.toLocaleTimeString('id-ID', opsiWaktu) + ' WITA';
-            document.getElementById('liveTanggal').innerText = sekarang.toLocaleDateString('id-ID', opsiTanggal);
-            
-            const jam = sekarang.getHours();
-            let ucapan = "Selamat Malam,";
-            if(jam >= 4 && jam < 11) ucapan = "Selamat Pagi,";
-            else if(jam >= 11 && jam < 15) ucapan = "Selamat Siang,";
-            else if(jam >= 15 && jam < 18) ucapan = "Selamat Sore,";
-            
-            document.getElementById('greetingWaktu').innerText = ucapan;
-        }
-
-        function gantiTab(tabId) {
-            if (tabId === 'panel-admin' && sessionStorage.getItem('session_admin') !== 'true') {
-                tampilToast('Akses ditolak! Silakan login Admin terlebih dahulu.', 'error');
-                bukaModalLogin();
+        // 1. MEMBACA DATA DARI SUPABASE
+        async function muatDataDariDatabasePusat() {
+            if (!dbClient) {
+                perbaruiSemuaData();
                 return;
             }
+            try {
+                const { data, error } = await dbClient
+                    .from('pengaturan_web')
+                    .select('data_json')
+                    .eq('id', 1)
+                    .single();
 
-            document.getElementById('mobileMenu').classList.add('hidden');
-            
-            const sections = ['beranda', 'profil', 'berita', 'pembangunan', 'panel-admin'];
-            sections.forEach(sec => {
-                const el = document.getElementById('tab-' + sec);
-                if (el) el.classList.add('hidden');
-                
-                const btnDesk = document.getElementById('btn-tab-' + sec);
-                if(btnDesk) btnDesk.className = "px-3.5 py-2 rounded-lg text-xs font-bold transition-all hover:bg-white/10 text-customCream-100";
-                const btnMob = document.getElementById('btn-tab-mob-' + sec);
-                if(btnMob) btnMob.className = "w-full text-left px-4 py-3 rounded-xl text-sm font-bold transition-all text-customCream-100 flex items-center gap-2.5";
-            });
-
-            const activeSec = document.getElementById('tab-' + tabId);
-            if(activeSec) activeSec.classList.remove('hidden');
-
-            const btnAktifDesk = document.getElementById('btn-tab-' + tabId);
-            if(btnAktifDesk) {
-                if(tabId === 'panel-admin') {
-                    btnAktifDesk.className = "px-3.5 py-2 rounded-lg text-xs font-bold transition-all bg-amber-500 hover:bg-amber-600 text-slate-950 shadow-md";
-                } else {
-                    btnAktifDesk.className = "px-3.5 py-2 rounded-lg text-xs font-bold transition-all hover:bg-white/10 text-white bg-customGreen-700 shadow-sm";
+                if (data && data.data_json && Object.keys(data.data_json).length > 0) {
+                    dbMaster = data.data_json;
                 }
+            } catch (err) {
+                console.warn("Membaca data default lokal.");
             }
-            
-            const btnAktifMob = document.getElementById('btn-tab-mob-' + tabId);
-            if(btnAktifMob) {
-                if(tabId === 'panel-admin') {
-                    btnAktifMob.className = "w-full text-left px-4 py-3 rounded-xl text-sm font-black transition-all bg-amber-500 text-slate-950 flex items-center gap-2.5";
-                } else {
-                    btnAktifMob.className = "w-full text-left px-4 py-3 rounded-xl text-sm font-bold transition-all text-white flex items-center gap-2.5 bg-customGreen-700";
-                }
-            }
+            perbaruiSemuaData();
         }
 
-        function toggleMobileMenu() { document.getElementById('mobileMenu').classList.toggle('hidden'); }
-
-        function tampilToast(teks, tipe = 'info') {
-            const toast = document.getElementById('panelToast');
-            const toastTeks = document.getElementById('toastTeks');
-            const toastIkon = document.getElementById('toastIkon');
-            
-            toastTeks.innerText = teks;
-            
-            if(tipe === 'success') {
-                toastIkon.setAttribute('data-lucide', 'check-circle-2');
-                toastIkon.className = "w-4 h-4 text-emerald-400";
-            } else if(tipe === 'error') {
-                toastIkon.setAttribute('data-lucide', 'x-circle');
-                toastIkon.className = "w-4 h-4 text-red-400";
-            } else {
-                toastIkon.setAttribute('data-lucide', 'info');
-                toastIkon.className = "w-4 h-4 text-amber-400";
+        // 2. MENYIMPAN DATA KE SUPABASE
+        async function simpanDatabasePusat() {
+            if (!dbClient) {
+                tampilToast("URL/Key Supabase belum diisi!", "error");
+                perbaruiSemuaData();
+                return;
             }
-            
-            lucide.createIcons();
-            toast.classList.remove('translate-y-20', 'opacity-0', 'pointer-events-none');
-            setTimeout(() => { toast.classList.add('translate-y-20', 'opacity-0', 'pointer-events-none'); }, 3000);
+            try {
+                const { error } = await dbClient
+                    .from('pengaturan_web')
+                    .update({ data_json: dbMaster })
+                    .eq('id', 1);
+
+                if (error) throw error;
+                tampilToast("Data tersimpan & ter-update di seluruh HP!", "success");
+            } catch(e) {
+                console.error("Gagal simpan:", e);
+                tampilToast("Gagal menyimpan perubahan ke cloud!", "error");
+            }
+            perbaruiSemuaData();
+        }
+
+        async function simpanProfilAdmin() {
+            dbMaster.profil = {
+                nama: document.getElementById('inpNamaKel').value.trim(),
+                lurah: document.getElementById('inpNamaLurah').value.trim(),
+                desc: document.getElementById('inpDesc').value.trim(),
+                penduduk: document.getElementById('inpPenduduk').value.trim(),
+                kk: document.getElementById('inpKK').value.trim(),
+                laki: document.getElementById('inpLaki').value.trim(),
+                perempuan: document.getElementById('inpPerempuan').value.trim(),
+                fotoLatar: document.getElementById('inpFotoLatar').value.trim() || dbMaster.profil.fotoLatar,
+                fotoStruktur: document.getElementById('inpFotoStruktur').value.trim() || dbMaster.profil.fotoStruktur
+            };
+
+            await simpanDatabasePusat();
         }
 
         function perbaruiSemuaData() {
-            document.getElementById('navNamaKelurahan').innerText = dbProfil.nama;
-            document.getElementById('txtHeroNama').innerText = dbProfil.nama;
-            document.getElementById('deskripsiKelurahan').innerText = dbProfil.desc;
-            document.getElementById('namaLurah').innerText = dbProfil.lurah;
+            const prof = dbMaster.profil;
+            document.getElementById('navNamaKelurahan').innerText = prof.nama;
+            document.getElementById('txtHeroNama').innerText = prof.nama;
+            document.getElementById('deskripsiKelurahan').innerText = prof.desc;
+            document.getElementById('namaLurah').innerText = prof.lurah;
             
-            if(dbProfil.fotoLatar) document.getElementById('fotoLatarBelakang').src = dbProfil.fotoLatar;
-            if(dbProfil.fotoStruktur) document.getElementById('fotoStruktur').src = dbProfil.fotoStruktur;
+            if(prof.fotoLatar) document.getElementById('fotoLatarBelakang').src = prof.fotoLatar;
+            if(prof.fotoStruktur) document.getElementById('fotoStruktur').src = prof.fotoStruktur;
 
-            document.getElementById('txtPenduduk').innerText = dbProfil.penduduk;
-            document.getElementById('txtKK').innerText = dbProfil.kk;
-            document.getElementById('txtLaki').innerText = dbProfil.laki;
-            document.getElementById('txtPerempuan').innerText = dbProfil.perempuan;
+            document.getElementById('txtPenduduk').innerText = prof.penduduk;
+            document.getElementById('txtKK').innerText = prof.kk;
+            document.getElementById('txtLaki').innerText = prof.laki;
+            document.getElementById('txtPerempuan').innerText = prof.perempuan;
+
+            document.getElementById('inpNamaKel').value = prof.nama;
+            document.getElementById('inpNamaLurah').value = prof.lurah;
+            document.getElementById('inpDesc').value = prof.desc;
+            document.getElementById('inpFotoLatar').value = prof.fotoLatar;
+            document.getElementById('inpFotoStruktur').value = prof.fotoStruktur;
+            document.getElementById('inpPenduduk').value = prof.penduduk;
+            document.getElementById('inpKK').value = prof.kk;
+            document.getElementById('inpLaki').value = prof.laki;
+            document.getElementById('inpPerempuan').value = prof.perempuan;
 
             const kontainerSurat = document.getElementById('kontainer-layanan-surat');
             kontainerSurat.innerHTML = '';
-            dbSurat.forEach((surat, indeks) => {
+            dbMaster.surat.forEach(surat => {
                 kontainerSurat.innerHTML += `
-                    <div class="p-4 bg-slate-50 hover:bg-customCream-100/50 border border-slate-100 rounded-2xl flex flex-col justify-between items-start gap-3 transition-all cursor-pointer shadow-sm hover:shadow-md" onclick="bukaModalSyarat(${indeks})">
-                        <div class="space-y-1">
-                            <span class="text-[9px] font-extrabold uppercase text-customGreen-600 tracking-wider">${surat.kategori}</span>
-                            <h4 class="text-xs font-black text-slate-800 leading-snug">${surat.judul}</h4>
-                        </div>
-                        <span class="inline-flex items-center gap-1 text-[10px] text-slate-500 font-bold hover:text-customGreen-600">
-                            Persyaratan & Alur <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
-                        </span>
+                    <div class="p-4 bg-slate-50 border border-slate-100 rounded-2xl">
+                        <span class="text-[9px] font-extrabold uppercase text-customGreen-600 block">${surat.kategori}</span>
+                        <h4 class="text-xs font-black text-slate-800">${surat.judul}</h4>
                     </div>
                 `;
             });
 
             const kontainerBerita = document.getElementById('kontainer-berita');
             kontainerBerita.innerHTML = '';
-            dbBerita.forEach(berita => {
+            dbMaster.berita.forEach(b => {
                 kontainerBerita.innerHTML += `
-                    <article class="bg-white rounded-3xl overflow-hidden border border-slate-200 shadow-sm flex flex-col h-full hover:shadow-md transition-shadow">
-                        <div class="h-44 overflow-hidden relative">
-                            <img src="${berita.img}" alt="Foto Berita" class="w-full h-full object-cover">
-                            <span class="absolute top-3 left-3 bg-customGreen-900 text-white text-[9px] font-black uppercase px-2.5 py-1 rounded-lg tracking-wider">${berita.kategori}</span>
-                        </div>
-                        <div class="p-5 flex flex-col justify-between flex-grow space-y-3">
-                            <div class="space-y-1.5">
-                                <span class="text-[9px] text-slate-400 font-bold">${berita.tanggal}</span>
-                                <h4 class="text-xs font-extrabold text-slate-900 leading-snug line-clamp-2">${berita.judul}</h4>
-                                <p class="text-[11px] text-slate-500 leading-relaxed line-clamp-3">${berita.isi}</p>
-                            </div>
-                        </div>
-                    </article>
-                `;
-            });
-
-            const kontainerPem = document.getElementById('kontainer-pembangunan');
-            kontainerPem.innerHTML = '';
-            dbPembangunan.forEach(pem => {
-                const statusWarna = pem.persen === 100 ? 'bg-emerald-500' : 'bg-amber-500';
-                kontainerPem.innerHTML += `
-                    <div class="bg-white rounded-3xl p-4 border border-slate-200 shadow-sm flex flex-col sm:flex-row gap-4 items-center">
-                        <div class="w-full sm:w-28 h-24 rounded-2xl overflow-hidden bg-slate-100 flex-shrink-0">
-                            <img src="${pem.img}" alt="Foto Progres" class="w-full h-full object-cover">
-                        </div>
-                        <div class="space-y-2 flex-grow w-full">
-                            <div>
-                                <span class="text-[8px] font-extrabold uppercase tracking-wider text-slate-400 block">${pem.kategori}</span>
-                                <h4 class="text-xs font-black text-slate-800 leading-snug">${pem.nama}</h4>
-                                <span class="text-[10px] text-slate-500 font-medium flex items-center gap-1"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-slate-400"></i> ${pem.lokasi}</span>
-                            </div>
-                            <div class="space-y-1">
-                                <div class="flex justify-between items-center text-[10px] font-bold">
-                                    <span>Kemajuan Proyek</span>
-                                    <span>${pem.persen}%</span>
-                                </div>
-                                <div class="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
-                                    <div class="${statusWarna} h-full" style="width: ${pem.persen}%"></div>
-                                </div>
-                            </div>
+                    <div class="bg-white rounded-3xl overflow-hidden border border-slate-200 shadow-sm">
+                        <img src="${b.img}" class="w-full h-40 object-cover">
+                        <div class="p-4 space-y-2">
+                            <span class="text-[9px] text-slate-400 font-bold">${b.tanggal}</span>
+                            <h4 class="text-xs font-black text-slate-900">${b.judul}</h4>
+                            <p class="text-[11px] text-slate-500 line-clamp-2">${b.isi}</p>
                         </div>
                     </div>
                 `;
             });
 
-            const badge = document.getElementById('badgeAduan');
-            if(dbPengaduan.length > 0) {
-                badge.innerText = dbPengaduan.length;
-                badge.classList.remove('hidden');
-            } else {
-                badge.classList.add('hidden');
+            const kontainerPem = document.getElementById('kontainer-pembangunan');
+            kontainerPem.innerHTML = '';
+            dbMaster.pembangunan.forEach(p => {
+                kontainerPem.innerHTML += `
+                    <div class="bg-white p-4 rounded-3xl border border-slate-200 shadow-sm flex gap-4 items-center">
+                        <img src="${p.img}" class="w-24 h-20 rounded-xl object-cover">
+                        <div class="space-y-1">
+                            <span class="text-[8px] font-black uppercase text-slate-400">${p.kategori}</span>
+                            <h4 class="text-xs font-black text-slate-800">${p.nama}</h4>
+                            <span class="text-[10px] text-slate-500">Progres: ${p.persen}%</span>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        function gantiTab(tabId) {
+            if (tabId === 'panel-admin' && sessionStorage.getItem('session_admin') !== 'true') {
+                bukaModalLogin(); return;
             }
-
-            document.getElementById('inpNamaKel').value = dbProfil.nama;
-            document.getElementById('inpNamaLurah').value = dbProfil.lurah;
-            document.getElementById('inpDesc').value = dbProfil.desc;
-            document.getElementById('inpPenduduk').value = dbProfil.penduduk;
-            document.getElementById('inpKK').value = dbProfil.kk;
-            document.getElementById('inpLaki').value = dbProfil.laki;
-            document.getElementById('inpPerempuan').value = dbProfil.perempuan;
-
-            lucide.createIcons();
+            ['beranda', 'profil', 'berita', 'pembangunan', 'panel-admin'].forEach(sec => {
+                document.getElementById('tab-' + sec).classList.add('hidden');
+            });
+            document.getElementById('tab-' + tabId).classList.remove('hidden');
+            document.getElementById('mobileMenu').classList.add('hidden');
         }
 
-        function bukaModalSyarat(indeks) {
-            const surat = dbSurat[indeks];
-            document.getElementById('modalSuratJudul').innerText = surat.judul;
-            document.getElementById('modalSuratKategori').innerText = surat.kategori;
-            document.getElementById('modalSuratSyarat').innerText = surat.syarat;
-            document.getElementById('modalSuratCara').innerText = surat.alur;
-            document.getElementById('modalSuratEstimasi').innerText = surat.estimasi;
-            document.getElementById('modalSyaratSurat').classList.remove('hidden');
-        }
-
-        function tutupModalSyarat() { document.getElementById('modalSyaratSurat').classList.add('hidden'); }
-
-        function kirimPengaduanPublik() {
-            const nama = document.getElementById('aduanNama').value.trim() || 'Anonim';
-            const kontak = document.getElementById('aduanKontak').value.trim();
-            const kategori = document.getElementById('aduanKategori').value;
-            const isi = document.getElementById('aduanIsi').value.trim();
-
-            if(!kontak || !isi) {
-                tampilToast('Silakan isi Kontak WA dan Detail Keluhan Anda!', 'error');
-                return;
-            }
-
-            const aduanBaru = {
-                id: Date.now(),
-                nama, kontak, kategori, isi,
-                tanggal: new Date().toLocaleDateString('id-ID', { day: 'numeric', month: 'short', year: 'numeric' })
-            };
-
-            dbPengaduan.unshift(aduanBaru);
-            localStorage.setItem('bl_pengaduan', JSON.stringify(dbPengaduan));
-            
-            tampilToast('Laporan Anda berhasil dikirim ke Admin Kelurahan!', 'success');
-            document.getElementById('aduanNama').value = '';
-            document.getElementById('aduanKontak').value = '';
-            document.getElementById('aduanIsi').value = '';
-
-            perbaruiSemuaData();
-            renderListAduanAdmin();
-        }
-
+        function toggleMobileMenu() { document.getElementById('mobileMenu').classList.toggle('hidden'); }
         function bukaModalLogin() { document.getElementById('modalLogin').classList.remove('hidden'); }
-        function tutupModalLogin() {
-            document.getElementById('modalLogin').classList.add('hidden');
-            document.getElementById('loginUsername').value = '';
-            document.getElementById('loginPassword').value = '';
-        }
+        function tutupModalLogin() { document.getElementById('modalLogin').classList.add('hidden'); }
 
         function prosesAutentikasi() {
-            const user = document.getElementById('loginUsername').value;
-            const pass = document.getElementById('loginPassword').value;
-
-            if(user === 'admin' && pass === 'batulappa123') {
+            if(document.getElementById('loginUsername').value === 'admin' && document.getElementById('loginPassword').value === 'batulappa123') {
                 sessionStorage.setItem('session_admin', 'true');
                 tutupModalLogin();
                 aktifkanModeAdmin();
-                tampilToast('Autentikasi berhasil! Selamat bekerja Administrator.', 'success');
                 gantiTab('panel-admin');
-            } else {
-                tampilToast('Username atau password Anda keliru!', 'error');
-            }
+                tampilToast("Login Admin Berhasil!", "success");
+            } else { tampilToast("Username/Password Salah!", "error"); }
         }
 
         function aktifkanModeAdmin() {
             document.getElementById('btn-login-desktop').classList.add('hidden');
             document.getElementById('btn-login-mobile').classList.add('hidden');
             document.getElementById('user-profile-desktop').classList.remove('hidden');
-            document.getElementById('user-profile-mobile').classList.remove('hidden');
             document.getElementById('btn-tab-panel-admin').classList.remove('hidden');
             document.getElementById('btn-tab-mob-panel-admin').classList.remove('hidden');
-            renderAdminPanelLists();
         }
 
         function prosesLogout() {
             sessionStorage.removeItem('session_admin');
-            document.getElementById('btn-login-desktop').classList.remove('hidden');
-            document.getElementById('btn-login-mobile').classList.remove('hidden');
-            document.getElementById('user-profile-desktop').classList.add('hidden');
-            document.getElementById('user-profile-mobile').classList.add('hidden');
-            document.getElementById('btn-tab-panel-admin').classList.add('hidden');
-            document.getElementById('btn-tab-mob-panel-admin').classList.add('hidden');
-            tampilToast('Anda telah keluar dari ruang kendali.', 'info');
-            gantiTab('beranda');
+            location.reload();
         }
 
-        function setAdminSubTab(subTabId) {
-            const tabs = ['profil', 'surat', 'berita', 'pembangunan', 'pengaduan'];
-            tabs.forEach(t => {
-                document.getElementById('adm-sec-' + t).classList.add('hidden');
-                document.getElementById('btn-adm-' + t).className = "text-left text-xs font-bold px-3 py-2.5 rounded-xl transition-all text-slate-600 hover:bg-slate-50";
-            });
-
-            document.getElementById('adm-sec-' + subTabId).classList.remove('hidden');
-            document.getElementById('btn-adm-' + subTabId).className = "text-left text-xs font-bold px-3 py-2.5 rounded-xl transition-all bg-customGreen-50 text-customGreen-700";
+        function tampilToast(teks, tipe) {
+            const toast = document.getElementById('panelToast');
+            document.getElementById('toastTeks').innerText = teks;
+            toast.classList.remove('translate-y-20', 'opacity-0', 'pointer-events-none');
+            setTimeout(() => { toast.classList.add('translate-y-20', 'opacity-0', 'pointer-events-none'); }, 3000);
         }
 
-        function renderAdminPanelLists() {
-            renderListSuratAdmin();
-            renderListBeritaAdmin();
-            renderListPemAdmin();
-            renderListAduanAdmin();
-        }
+        async function kirimPengaduanPublik() {
+            const nama = document.getElementById('aduanNama').value.trim() || 'Anonim';
+            const kontak = document.getElementById('aduanKontak').value.trim();
+            const isi = document.getElementById('aduanIsi').value.trim();
 
-        // AKSI SIMPAN PROFIL OPERATOR (TERMASUK UPLOAD FOTO AUTO CLOUD)
-        async function simpanProfilAdmin() {
-            const btn = document.getElementById('btnSimpanProfil');
-            btn.disabled = true;
-            btn.innerText = "Mengunggah Gambar & Menyimpan...";
+            if(!kontak || !isi) { tampilToast('Harap isi nomor kontak & isi pengaduan!', 'error'); return; }
 
-            const fileLatarInput = document.getElementById('inpFotoLatar');
-            const fileStrukturInput = document.getElementById('inpFotoStruktur');
-
-            let urlLatar = dbProfil.fotoLatar;
-            let urlStruktur = dbProfil.fotoStruktur;
-
-            if (fileLatarInput.files.length > 0) {
-                const resLatar = await uploadGambarKeCloud(fileLatarInput);
-                if (resLatar) urlLatar = resLatar;
-            }
-
-            if (fileStrukturInput.files.length > 0) {
-                const resStruktur = await uploadGambarKeCloud(fileStrukturInput);
-                if (resStruktur) urlStruktur = resStruktur;
-            }
-
-            dbProfil.nama = document.getElementById('inpNamaKel').value.trim();
-            dbProfil.lurah = document.getElementById('inpNamaLurah').value.trim();
-            dbProfil.desc = document.getElementById('inpDesc').value.trim();
-            dbProfil.penduduk = document.getElementById('inpPenduduk').value.trim();
-            dbProfil.kk = document.getElementById('inpKK').value.trim();
-            dbProfil.laki = document.getElementById('inpLaki').value.trim();
-            dbProfil.perempuan = document.getElementById('inpPerempuan').value.trim();
-            dbProfil.fotoLatar = urlLatar;
-            dbProfil.fotoStruktur = urlStruktur;
-
-            localStorage.setItem('bl_profil', JSON.stringify(dbProfil));
-            
-            btn.disabled = false;
-            btn.innerText = "Simpan Perubahan Publik";
-
-            tampilToast('Perubahan profil & foto publik berhasil disimpan!', 'success');
-            perbaruiSemuaData();
-        }
-
-        function renderListSuratAdmin() {
-            const list = document.getElementById('adminListSurat');
-            list.innerHTML = '';
-            dbSurat.forEach(s => {
-                list.innerHTML += `
-                    <div class="p-3 text-xs flex justify-between items-center bg-white hover:bg-slate-50">
-                        <div><p class="font-bold text-slate-800">${s.judul}</p><span class="text-[10px] text-slate-400">${s.kategori} | Estimasi: ${s.estimasi}</span></div>
-                        <button onclick="hapusSuratAdmin(${s.id})" class="p-1.5 text-red-600 hover:bg-red-50 rounded-lg"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
-                    </div>
-                `;
-            });
-            lucide.createIcons();
-        }
-
-        function tambahSuratAdmin() {
-            const judul = document.getElementById('formSuratJudul').value.trim();
-            const kategori = document.getElementById('formSuratKat').value.trim();
-            const syarat = document.getElementById('formSuratSyarat').value.trim();
-            const alur = document.getElementById('formSuratAlur').value.trim();
-            const estimasi = document.getElementById('formSuratWaktu').value.trim() || '1 Hari Kerja';
-
-            if(!judul || !kategori || !syarat || !alur) {
-                tampilToast('Silakan lengkapi formulir detail surat!', 'error');
-                return;
-            }
-
-            const baru = { id: Date.now(), judul, kategori, syarat, alur, estimasi };
-            dbSurat.push(baru);
-            localStorage.setItem('bl_surat', JSON.stringify(dbSurat));
-            
-            document.getElementById('formSuratJudul').value = '';
-            document.getElementById('formSuratKat').value = '';
-            document.getElementById('formSuratSyarat').value = '';
-            document.getElementById('formSuratAlur').value = '';
-            
-            tampilToast('Surat berhasil disimpan!', 'success');
-            perbaruiSemuaData();
-            renderListSuratAdmin();
-        }
-
-        function hapusSuratAdmin(id) {
-            dbSurat = dbSurat.filter(s => s.id !== id);
-            localStorage.setItem('bl_surat', JSON.stringify(dbSurat));
-            perbaruiSemuaData();
-            renderListSuratAdmin();
-            tampilToast('Layanan surat berhasil dihapus.', 'info');
-        }
-
-        function renderListBeritaAdmin() {
-            const list = document.getElementById('adminListBerita');
-            list.innerHTML = '';
-            dbBerita.forEach(b => {
-                list.innerHTML += `
-                    <div class="p-3 text-xs flex justify-between items-center bg-white hover:bg-slate-50">
-                        <div><p class="font-bold text-slate-800 line-clamp-1">${b.judul}</p><span class="text-[10px] text-slate-400">${b.kategori} | ${b.tanggal}</span></div>
-                        <button onclick="hapusBeritaAdmin(${b.id})" class="p-1.5 text-red-600 hover:bg-red-50 rounded-lg"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
-                    </div>
-                `;
-            });
-            lucide.createIcons();
-        }
-
-        async function terbitBeritaAdmin() {
-            const judul = document.getElementById('formBeritaJudul').value.trim();
-            const kategori = document.getElementById('formBeritaKat').value.trim();
-            const isi = document.getElementById('formBeritaIsi').value.trim();
-
-            if(!judul || !kategori || !isi) {
-                tampilToast('Harap isi judul, kategori, dan deskripsi berita!', 'error');
-                return;
-            }
-
-            const fileImgInput = document.getElementById('formBeritaImg');
-            let imgUrl = "https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=800";
-
-            if (fileImgInput.files.length > 0) {
-                const res = await uploadGambarKeCloud(fileImgInput);
-                if (res) imgUrl = res;
-            }
-
-            const baru = {
-                id: Date.now(), judul, kategori, img: imgUrl, isi,
-                tanggal: new Date().toLocaleDateString('id-ID', { day: 'numeric', month: 'short', year: 'numeric' })
-            };
-
-            dbBerita.unshift(baru);
-            localStorage.setItem('bl_berita', JSON.stringify(dbBerita));
-
-            document.getElementById('formBeritaJudul').value = '';
-            document.getElementById('formBeritaKat').value = '';
-            document.getElementById('formBeritaIsi').value = '';
-            fileImgInput.value = '';
-
-            tampilToast('Kabar berita berhasil diterbitkan!', 'success');
-            perbaruiSemuaData();
-            renderListBeritaAdmin();
-        }
-
-        function hapusBeritaAdmin(id) {
-            dbBerita = dbBerita.filter(b => b.id !== id);
-            localStorage.setItem('bl_berita', JSON.stringify(dbBerita));
-            perbaruiSemuaData();
-            renderListBeritaAdmin();
-            tampilToast('Berita berhasil dihapus.', 'info');
-        }
-
-        function renderListPemAdmin() {
-            const list = document.getElementById('adminListPem');
-            list.innerHTML = '';
-            dbPembangunan.forEach(p => {
-                list.innerHTML += `
-                    <div class="p-3 text-xs flex justify-between items-center bg-white hover:bg-slate-50">
-                        <div><p class="font-bold text-slate-800">${p.nama}</p><span class="text-[10px] text-slate-400">${p.lokasi} | Progres: <b class="text-customGreen-600">${p.persen}%</b></span></div>
-                        <button onclick="hapusPembangunanAdmin(${p.id})" class="p-1.5 text-red-600 hover:bg-red-50 rounded-lg"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
-                    </div>
-                `;
-            });
-            lucide.createIcons();
-        }
-
-        async function tambahPembangunanAdmin() {
-            const nama = document.getElementById('formPemNama').value.trim();
-            const kategori = document.getElementById('formPemKat').value.trim();
-            const lokasi = document.getElementById('formPemLokasi').value.trim();
-            const persen = parseInt(document.getElementById('formPemPersen').value) || 0;
-
-            if(!nama || !kategori || !lokasi) {
-                tampilToast('Harap isi Nama Proyek, Sumber Anggaran, dan Lokasi!', 'error');
-                return;
-            }
-
-            const fileImgInput = document.getElementById('formPemImg');
-            let imgUrl = "https://images.unsplash.com/photo-1590069261209-f8e9b8642343?q=80&w=800";
-
-            if (fileImgInput.files.length > 0) {
-                const res = await uploadGambarKeCloud(fileImgInput);
-                if (res) imgUrl = res;
-            }
-
-            const baru = { id: Date.now(), nama, kategori, lokasi, persen, img: imgUrl };
-            dbPembangunan.push(baru);
-            localStorage.setItem('bl_pembangunan', JSON.stringify(dbPembangunan));
-
-            document.getElementById('formPemNama').value = '';
-            document.getElementById('formPemKat').value = '';
-            document.getElementById('formPemLokasi').value = '';
-            document.getElementById('formPemPersen').value = '';
-            fileImgInput.value = '';
-
-            tampilToast('Progress pembangunan diperbarui!', 'success');
-            perbaruiSemuaData();
-            renderListPemAdmin();
-        }
-
-        function hapusPembangunanAdmin(id) {
-            dbPembangunan = dbPembangunan.filter(p => p.id !== id);
-            localStorage.setItem('bl_pembangunan', JSON.stringify(dbPembangunan));
-            perbaruiSemuaData();
-            renderListPemAdmin();
-            tampilToast('Progres proyek dihapus.', 'info');
-        }
-
-        function renderListAduanAdmin() {
-            const list = document.getElementById('adminListAduan');
-            list.innerHTML = '';
-
-            if(dbPengaduan.length === 0) {
-                list.innerHTML = `
-                    <div class="p-8 text-center text-slate-400 text-xs">
-                        <i data-lucide="mail-open" class="w-10 h-10 mx-auto text-slate-300 mb-2"></i>
-                        Belum ada laporan pengaduan masuk saat ini.
-                    </div>
-                `;
-                lucide.createIcons();
-                return;
-            }
-
-            dbPengaduan.forEach(a => {
-                list.innerHTML += `
-                    <div class="p-4 bg-slate-50 border rounded-2xl relative space-y-2">
-                        <button onclick="hapusAduan(${a.id})" class="absolute top-3 right-3 text-red-500 hover:bg-red-50 p-1 rounded-lg" title="Selesaikan / Hapus"><i data-lucide="check" class="w-4 h-4"></i></button>
-                        <div class="flex items-center gap-2">
-                            <span class="text-[8px] font-black uppercase px-2 py-0.5 rounded-md bg-amber-500/10 text-amber-700">${a.kategori}</span>
-                            <span class="text-[9px] text-slate-400">${a.tanggal}</span>
-                        </div>
-                        <p class="text-xs text-slate-700 leading-relaxed font-medium">"${a.isi}"</p>
-                        <div class="flex justify-between items-center text-[10px] text-slate-400 border-t pt-1.5 mt-1 font-bold">
-                            <span>Oleh: <b class="text-slate-600">${a.nama}</b></span>
-                            <span>Kontak: <a href="https://wa.me/${a.kontak}" target="_blank" class="text-emerald-600 hover:underline flex items-center gap-1"><i data-lucide="phone" class="w-3 h-3"></i> ${a.kontak}</a></span>
-                        </div>
-                    </div>
-                `;
-            });
-            lucide.createIcons();
-        }
-
-        function hapusAduan(id) {
-            dbPengaduan = dbPengaduan.filter(a => a.id !== id);
-            localStorage.setItem('bl_pengaduan', JSON.stringify(dbPengaduan));
-            tampilToast('Laporan berhasil diselesaikan & diarsipkan.', 'success');
-            perbaruiSemuaData();
-            renderListAduanAdmin();
-        }
-
-        function bersihkanSemuaAduan() {
-            if(confirm('Apakah Anda yakin ingin menghapus seluruh riwayat pengaduan?')) {
-                dbPengaduan = [];
-                localStorage.setItem('bl_pengaduan', JSON.stringify(dbPengaduan));
-                tampilToast('Seluruh data pengaduan berhasil dibersihkan.', 'info');
-                perbaruiSemuaData();
-                renderListAduanAdmin();
-            }
+            dbMaster.pengaduan.unshift({ id: Date.now(), nama, kontak, isi, tanggal: new Date().toLocaleDateString('id-ID') });
+            await simpanDatabasePusat();
+            document.getElementById('aduanNama').value = '';
+            document.getElementById('aduanKontak').value = '';
+            document.getElementById('aduanIsi').value = '';
         }
     </script>
 </body>
