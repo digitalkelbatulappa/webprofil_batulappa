@@ -58,10 +58,9 @@
 </head>
 <body class="bg-customCream-100 text-slate-800 h-screen flex flex-col overflow-hidden select-none">
 
-    <!-- ================= NAVIGASI UTAMA ================= -->
+    <!-- NAVIGASI UTAMA -->
     <header class="bg-customGreen-850 text-white shadow-lg flex-none z-50 border-b border-customGreen-900 relative">
         <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center gap-4">
-            <!-- Logo & Brand -->
             <div class="flex items-center gap-3 cursor-pointer" onclick="gantiTab('beranda')">
                 <div class="p-2.5 bg-white/10 rounded-xl shadow-inner backdrop-blur-md">
                     <i data-lucide="map-pin" class="w-6 h-6 text-customCream-300"></i>
@@ -74,12 +73,10 @@
                 </div>
             </div>
 
-            <!-- Tombol Hamburger (Mobile) -->
             <button onclick="toggleMobileMenu()" class="p-2 text-white hover:bg-customGreen-700 rounded-xl md:hidden focus:outline-none transition-colors">
                 <i data-lucide="menu" class="w-6 h-6"></i>
             </button>
 
-            <!-- Menu Tab Navigation (Desktop) -->
             <div class="hidden md:flex items-center gap-2">
                 <nav class="flex items-center gap-1 bg-customGreen-900/40 p-1 rounded-xl border border-customGreen-900/40">
                     <button onclick="gantiTab('beranda')" id="btn-tab-beranda" class="px-3.5 py-2 rounded-lg text-xs font-bold transition-all hover:bg-white/10 text-white bg-customGreen-700 shadow-sm">Beranda</button>
@@ -89,13 +86,10 @@
                     <button onclick="gantiTab('panel-admin')" id="btn-tab-panel-admin" class="hidden px-3.5 py-2 rounded-lg text-xs font-bold transition-all bg-amber-500 hover:bg-amber-600 text-slate-950 shadow-md">Panel Admin</button>
                 </nav>
 
-                <!-- Tombol Login Admin Desktop -->
                 <button onclick="bukaModalLogin()" id="btn-login-desktop" class="px-3.5 py-2 rounded-lg text-xs font-bold bg-customCream-400 hover:bg-customCream-50 text-slate-900 transition-all shadow-sm flex items-center gap-2">
-                    <i data-lucide="lock" class="w-3.5 h-3.5"></i>
-                    Login Admin
+                    <i data-lucide="lock" class="w-3.5 h-3.5"></i> Login Admin
                 </button>
                 
-                <!-- Profil Setelah Login -->
                 <div id="user-profile-desktop" class="hidden flex items-center gap-2.5 bg-customGreen-900/40 p-1 rounded-xl pr-3 border border-customGreen-900/20">
                     <div class="w-8 h-8 rounded-lg bg-amber-500 text-slate-950 flex items-center justify-center font-black text-xs">AD</div>
                     <div class="flex flex-col">
@@ -109,7 +103,6 @@
             </div>
         </div>
 
-        <!-- DROP-DOWN MENU MOBILE -->
         <div id="mobileMenu" class="hidden md:hidden absolute top-full left-0 w-full bg-customGreen-850/95 backdrop-blur-md border-t border-customGreen-700/50 shadow-2xl z-50">
             <div class="p-4 flex flex-col gap-2">
                 <button onclick="gantiTab('beranda')" id="btn-tab-mob-beranda" class="w-full text-left px-4 py-3 rounded-xl text-sm font-bold transition-all text-white flex items-center gap-2.5 bg-customGreen-700">
@@ -147,7 +140,7 @@
         </div>
     </header>
 
-    <!-- ================= MODAL LOGIN DIALOG (POPUP) ================= -->
+    <!-- MODAL LOGIN -->
     <div id="modalLogin" class="hidden fixed inset-0 z-[100] flex items-center justify-center p-4">
         <div class="absolute inset-0 bg-slate-950/60 backdrop-blur-sm" onclick="tutupModalLogin()"></div>
         <div class="bg-white w-full max-w-sm rounded-3xl p-6 relative z-10 border border-slate-200 shadow-2xl space-y-4 animate-fade-in">
@@ -182,7 +175,7 @@
         </div>
     </div>
 
-    <!-- ================= MODAL DETAIL SYARAT SURAT (POPUP INTERAKTIF WARGA) ================= -->
+    <!-- MODAL SYARAT SURAT -->
     <div id="modalSyaratSurat" class="hidden fixed inset-0 z-[100] flex items-center justify-center p-4">
         <div class="absolute inset-0 bg-slate-950/65 backdrop-blur-sm" onclick="tutupModalSyarat()"></div>
         <div class="bg-white w-full max-w-lg rounded-3xl p-6 relative z-10 border border-slate-200 shadow-2xl space-y-4 animate-fade-in">
@@ -242,18 +235,14 @@
         </div>
     </div>
 
-    <!-- ================= KONTEN UTAMA ================= -->
+    <!-- MAIN KONTEN -->
     <main class="flex-grow overflow-y-auto w-full bg-customCream-50">
         <div class="max-w-6xl mx-auto p-4 md:p-6 space-y-8 pb-12">
             
-            <!-- ================= TAB 1: BERANDA ================= -->
+            <!-- TAB 1: BERANDA -->
             <section id="tab-beranda" class="space-y-8 animate-fade-in">
-                <!-- Hero Banner -->
                 <div class="relative rounded-3xl overflow-hidden shadow-xl min-h-[300px] flex flex-col justify-center p-8 md:p-12">
-                    <img id="fotoLatarBelakang" src="" 
-                         alt="Pemandangan Kelurahan Batu Lappa" 
-                         class="absolute inset-0 w-full h-full object-cover filter brightness-[0.35]">
-                    
+                    <img id="fotoLatarBelakang" src="" alt="Pemandangan Kelurahan Batu Lappa" class="absolute inset-0 w-full h-full object-cover filter brightness-[0.35]">
                     <div class="absolute inset-0 opacity-15 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:16px_16px]"></div>
                     <div class="relative max-w-2xl space-y-4">
                         <span class="inline-flex items-center gap-1.5 bg-customCream-300/30 text-customCream-200 text-[10px] font-extrabold uppercase px-3 py-1 rounded-full tracking-wider border border-customCream-300/30">
@@ -267,7 +256,6 @@
                     </div>
                 </div>
 
-                <!-- Live Jam & Informasi Cuaca -->
                 <div class="bg-gradient-to-r from-customGreen-900 to-customGreen-850 text-white rounded-2xl p-4 shadow-md grid grid-cols-2 sm:grid-cols-4 gap-4 items-center border border-customGreen-900">
                     <div class="flex items-center gap-3 border-r border-customGreen-800 pr-2">
                         <div class="p-2.5 bg-customGreen-800 text-customCream-300 rounded-xl"><i data-lucide="clock" class="w-5 h-5"></i></div>
@@ -299,25 +287,19 @@
                     </div>
                 </div>
 
-                <!-- Grid Form Pengaduan & Panduan Berkas -->
                 <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                    <!-- Kiri: Panduan Administrasi Dinamis -->
                     <div class="lg:col-span-2 bg-white p-6 rounded-3xl border border-customGreen-100 shadow-sm space-y-4">
                         <h3 class="text-base font-extrabold text-slate-900 flex items-center gap-2">
                             <span class="w-1.5 h-5 bg-customCream-400 rounded-full"></span>
                             Panduan & Syarat Pengurusan Administrasi (Pilih Surat)
                         </h3>
-                        <div id="kontainer-layanan-surat" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                            <!-- Tombol Surat Dimasukkan Secara Dinamis -->
-                        </div>
+                        <div id="kontainer-layanan-surat" class="grid grid-cols-1 sm:grid-cols-2 gap-4"></div>
                     </div>
 
-                    <!-- Kanan: FORMULIR PENGADUAN WARGA (PUBLIK) -->
                     <div class="bg-white p-6 rounded-3xl border border-customGreen-100 shadow-sm space-y-4">
                         <div class="space-y-1">
                             <h3 class="text-sm font-black text-slate-900 flex items-center gap-2">
-                                <i data-lucide="send" class="w-4 h-4 text-customGreen-600"></i>
-                                Layanan Pengaduan Warga
+                                <i data-lucide="send" class="w-4 h-4 text-customGreen-600"></i> Layanan Pengaduan Warga
                             </h3>
                             <p class="text-[10px] text-slate-400">Ajukan keluhan infrastruktur, pelayanan, atau keamanan.</p>
                         </div>
@@ -352,7 +334,7 @@
                 </div>
             </section>
 
-            <!-- ================= TAB 2: PROFIL ================= -->
+            <!-- TAB 2: PROFIL -->
             <section id="tab-profil" class="hidden space-y-8 animate-fade-in">
                 <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
                     <div class="bg-gradient-to-br from-customGreen-600 to-customGreen-700 text-white p-5 rounded-2xl shadow-sm flex items-center justify-between border border-customGreen-500/20">
@@ -395,9 +377,7 @@
 
                     <div class="space-y-6">
                         <div class="max-w-xl mx-auto rounded-2xl overflow-hidden border border-slate-200 bg-slate-50 p-2">
-                            <img id="fotoStruktur" src="" 
-                                 alt="Bagan Struktur Organisasi" 
-                                 class="w-full h-auto rounded-xl object-cover aspect-[16/9] hover:scale-[1.02] transition-transform duration-300">
+                            <img id="fotoStruktur" src="" alt="Bagan Struktur Organisasi" class="w-full h-auto rounded-xl object-cover aspect-[16/9] hover:scale-[1.02] transition-transform duration-300">
                         </div>
                         <div class="flex justify-center mt-6">
                             <div class="bg-customCream-50 border-2 border-customGreen-600 p-4 rounded-2xl text-center shadow-sm w-full max-w-[240px] relative">
@@ -409,44 +389,37 @@
                 </div>
             </section>
 
-            <!-- ================= TAB 3: BERITA ================= -->
+            <!-- TAB 3: BERITA -->
             <section id="tab-berita" class="hidden space-y-6 animate-fade-in">
                 <div class="flex justify-between items-center">
                     <h3 class="text-base font-extrabold text-slate-900 flex items-center gap-2">
-                        <span class="w-1.5 h-5 bg-customGreen-600 rounded-full"></span>
-                        Portal Berita Terkini
+                        <span class="w-1.5 h-5 bg-customGreen-600 rounded-full"></span> Portal Berita Terkini
                     </h3>
                 </div>
-                <div id="kontainer-berita" class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <!-- Berita dimasukkan dinamis -->
-                </div>
+                <div id="kontainer-berita" class="grid grid-cols-1 md:grid-cols-3 gap-6"></div>
             </section>
 
-            <!-- ================= TAB 4: PEMBANGUNAN ================= -->
+            <!-- TAB 4: PEMBANGUNAN -->
             <section id="tab-pembangunan" class="hidden space-y-6 animate-fade-in">
                 <h3 class="text-base font-extrabold text-slate-900 flex items-center gap-2">
-                    <span class="w-1.5 h-5 bg-customGreen-600 rounded-full"></span>
-                    Realisasi & Progress Pembangunan Wilayah
+                    <span class="w-1.5 h-5 bg-customGreen-600 rounded-full"></span> Realisasi & Progress Pembangunan Wilayah
                 </h3>
-                <div id="kontainer-pembangunan" class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <!-- Progres dimasukkan dinamis oleh JS -->
-                </div>
+                <div id="kontainer-pembangunan" class="grid grid-cols-1 md:grid-cols-2 gap-6"></div>
             </section>
 
-            <!-- ================= TAB 5: PANEL ADMIN ================= -->
+            <!-- TAB 5: PANEL ADMIN (CMS UTAMA OPERATOR) -->
             <section id="tab-panel-admin" class="hidden space-y-8 animate-fade-in">
                 <div class="p-6 bg-amber-50 rounded-3xl border border-amber-200 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
                     <div class="flex items-center gap-2.5 text-amber-900">
                         <i data-lucide="lock" class="w-6 h-6"></i>
                         <div>
                             <h3 class="text-base font-black uppercase tracking-wide leading-none">Ruang Kelola Admin Kelurahan</h3>
-                            <span class="text-[10px] text-amber-800 font-semibold block mt-1">Gunakan panel ini untuk memperbarui data portal publik secara real-time.</span>
+                            <span class="text-[10px] text-amber-800 font-semibold block mt-1">Upload foto & ubah data langsung memperbarui seluruh tampilan publik di internet.</span>
                         </div>
                     </div>
                 </div>
 
                 <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
-                    <!-- Sidebar Navigasi Admin -->
                     <div class="flex flex-col gap-1 bg-white p-4 rounded-2xl border border-slate-200 shadow-sm h-fit">
                         <span class="text-[9px] font-black text-slate-400 uppercase tracking-wider px-3 mb-2 block">Kategori Kelola</span>
                         <button onclick="setAdminSubTab('profil')" id="btn-adm-profil" class="text-left text-xs font-bold px-3 py-2.5 rounded-xl transition-all bg-customGreen-50 text-customGreen-700">Profil & Statistik</button>
@@ -459,11 +432,10 @@
                         </button>
                     </div>
 
-                    <!-- Panel Detail Admin Forms -->
                     <div class="lg:col-span-3 space-y-6">
-                        <!-- 1. Admin Profil & Statistik -->
+                        <!-- Profil Form -->
                         <div id="adm-sec-profil" class="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm space-y-4">
-                            <h4 class="text-sm font-black text-slate-800 border-b pb-2 flex items-center gap-1.5"><i data-lucide="edit-3" class="w-4 h-4 text-customGreen-500"></i> Edit Identitas & Statistik Kelurahan</h4>
+                            <h4 class="text-sm font-black text-slate-800 border-b pb-2 flex items-center gap-1.5"><i data-lucide="edit-3" class="w-4 h-4 text-customGreen-500"></i> Edit Identitas & Upload Foto Website Publik</h4>
                             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                 <div class="space-y-1">
                                     <label class="text-[9px] font-bold text-slate-500 uppercase">Nama Kelurahan</label>
@@ -478,162 +450,70 @@
                                     <textarea id="inpDesc" rows="2" class="w-full text-xs p-2.5 rounded-xl border border-slate-200"></textarea>
                                 </div>
                                 <div class="space-y-1">
-                                    <label class="text-[9px] font-bold text-slate-500 uppercase">Upload Foto Latar Belakang (Maks 1.5MB)</label>
-                                    <div class="flex items-center gap-3">
-                                        <input type="file" id="inpFotoLatar" accept="image/*" class="w-full text-xs p-1.5 rounded-xl border border-slate-200 file:mr-3 file:py-1 file:px-2.5 file:rounded-lg file:border-0 file:text-[10px] file:font-bold file:bg-customGreen-50 file:text-customGreen-700 hover:file:bg-customGreen-100">
-                                        <img id="prevFotoLatar" class="w-10 h-10 object-cover rounded-lg border hidden shadow-inner">
-                                    </div>
+                                    <label class="text-[9px] font-bold text-slate-500 uppercase">Upload Foto Latar Belakang (Langsung Publik)</label>
+                                    <input type="file" id="inpFotoLatar" accept="image/*" class="w-full text-xs p-1.5 rounded-xl border border-slate-200">
                                 </div>
                                 <div class="space-y-1">
-                                    <label class="text-[9px] font-bold text-slate-500 uppercase">Upload Struktur Organisasi (Maks 1.5MB)</label>
-                                    <div class="flex items-center gap-3">
-                                        <input type="file" id="inpFotoStruktur" accept="image/*" class="w-full text-xs p-1.5 rounded-xl border border-slate-200 file:mr-3 file:py-1 file:px-2.5 file:rounded-lg file:border-0 file:text-[10px] file:font-bold file:bg-customGreen-50 file:text-customGreen-700 hover:file:bg-customGreen-100">
-                                        <img id="prevFotoStruktur" class="w-10 h-10 object-cover rounded-lg border hidden shadow-inner">
-                                    </div>
+                                    <label class="text-[9px] font-bold text-slate-500 uppercase">Upload Foto Struktur Organisasi (Langsung Publik)</label>
+                                    <input type="file" id="inpFotoStruktur" accept="image/*" class="w-full text-xs p-1.5 rounded-xl border border-slate-200">
                                 </div>
                                 <div class="border-t sm:col-span-2 my-1"></div>
-                                <div class="space-y-1">
-                                    <label class="text-[9px] font-bold text-slate-500 uppercase">Total Penduduk (Jiwa)</label>
-                                    <input type="text" id="inpPenduduk" class="w-full text-xs p-2.5 rounded-xl border border-slate-200">
-                                </div>
-                                <div class="space-y-1">
-                                    <label class="text-[9px] font-bold text-slate-500 uppercase">Total KK</label>
-                                    <input type="text" id="inpKK" class="w-full text-xs p-2.5 rounded-xl border border-slate-200">
-                                </div>
-                                <div class="space-y-1">
-                                    <label class="text-[9px] font-bold text-slate-500 uppercase">Penduduk Laki-Laki (Jiwa)</label>
-                                    <input type="text" id="inpLaki" class="w-full text-xs p-2.5 rounded-xl border border-slate-200">
-                                </div>
-                                <div class="space-y-1">
-                                    <label class="text-[9px] font-bold text-slate-500 uppercase">Penduduk Perempuan (Jiwa)</label>
-                                    <input type="text" id="inpPerempuan" class="w-full text-xs p-2.5 rounded-xl border border-slate-200">
-                                </div>
+                                <div class="space-y-1"><label class="text-[9px] font-bold text-slate-500 uppercase">Total Penduduk (Jiwa)</label><input type="text" id="inpPenduduk" class="w-full text-xs p-2.5 rounded-xl border border-slate-200"></div>
+                                <div class="space-y-1"><label class="text-[9px] font-bold text-slate-500 uppercase">Total KK</label><input type="text" id="inpKK" class="w-full text-xs p-2.5 rounded-xl border border-slate-200"></div>
+                                <div class="space-y-1"><label class="text-[9px] font-bold text-slate-500 uppercase">Laki-Laki (Jiwa)</label><input type="text" id="inpLaki" class="w-full text-xs p-2.5 rounded-xl border border-slate-200"></div>
+                                <div class="space-y-1"><label class="text-[9px] font-bold text-slate-500 uppercase">Perempuan (Jiwa)</label><input type="text" id="inpPerempuan" class="w-full text-xs p-2.5 rounded-xl border border-slate-200"></div>
                             </div>
-                            <button onclick="simpanProfilAdmin()" class="px-4 py-2 bg-customGreen-700 hover:bg-customGreen-800 text-white rounded-xl text-xs font-bold">Simpan Perubahan Profil</button>
+                            <button onclick="simpanProfilAdmin()" id="btnSimpanProfil" class="px-5 py-2.5 bg-customGreen-700 hover:bg-customGreen-800 text-white rounded-xl text-xs font-bold shadow-md transition-all">Simpan Perubahan Publik</button>
                         </div>
 
-                        <!-- 2. Admin Kelola Surat -->
+                        <!-- Surat Form -->
                         <div id="adm-sec-surat" class="hidden bg-white p-6 rounded-3xl border border-slate-200 shadow-sm space-y-4">
-                            <h4 class="text-sm font-black text-slate-800 border-b pb-2 flex items-center gap-1.5"><i data-lucide="file-text" class="w-4 h-4 text-customGreen-500"></i> Tambah / Kelola Layanan Surat</h4>
+                            <h4 class="text-sm font-black text-slate-800 border-b pb-2 flex items-center gap-1.5"><i data-lucide="file-text" class="w-4 h-4 text-customGreen-500"></i> Kelola Layanan Surat</h4>
                             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 bg-slate-50 p-4 rounded-2xl border border-slate-100">
-                                <div class="space-y-1">
-                                    <label class="text-[9px] font-bold text-slate-500 uppercase">Nama / Judul Surat</label>
-                                    <input type="text" id="formSuratJudul" placeholder="Contoh: Surat Pengantar RT" class="w-full text-xs p-2.5 rounded-xl border border-slate-200">
-                                </div>
-                                <div class="space-y-1">
-                                    <label class="text-[9px] font-bold text-slate-500 uppercase">Kategori Surat</label>
-                                    <input type="text" id="formSuratKat" placeholder="Contoh: Kependudukan" class="w-full text-xs p-2.5 rounded-xl border border-slate-200">
-                                </div>
-                                <div class="space-y-1 sm:col-span-2">
-                                    <label class="text-[9px] font-bold text-slate-500 uppercase">Persyaratan Dokumen (Pisahkan Baris)</label>
-                                    <textarea id="formSuratSyarat" rows="3" placeholder="Contoh:&#10;1. KTP&#10;2. Kartu Keluarga" class="w-full text-xs p-2.5 rounded-xl border border-slate-200"></textarea>
-                                </div>
-                                <div class="space-y-1 sm:col-span-2">
-                                    <label class="text-[9px] font-bold text-slate-500 uppercase">Alur / Cara Pengurusan (Pisahkan Baris)</label>
-                                    <textarea id="formSuratAlur" rows="3" placeholder="Contoh:&#10;1. Warga membawa berkas ke RT&#10;2. Pengajuan diverifikasi petugas Kelurahan" class="w-full text-xs p-2.5 rounded-xl border border-slate-200"></textarea>
-                                </div>
-                                <div class="space-y-1">
-                                    <label class="text-[9px] font-bold text-slate-500 uppercase">Estimasi Waktu Pengerjaan</label>
-                                    <input type="text" id="formSuratWaktu" placeholder="Contoh: 1 Hari Kerja" class="w-full text-xs p-2.5 rounded-xl border border-slate-200">
-                                </div>
-                                <div class="space-y-1 flex items-end">
-                                    <button onclick="tambahSuratAdmin()" class="w-full py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-bold shadow-md">Simpan Surat Baru</button>
-                                </div>
+                                <div class="space-y-1"><label class="text-[9px] font-bold text-slate-500 uppercase">Nama Surat</label><input type="text" id="formSuratJudul" class="w-full text-xs p-2.5 rounded-xl border border-slate-200"></div>
+                                <div class="space-y-1"><label class="text-[9px] font-bold text-slate-500 uppercase">Kategori</label><input type="text" id="formSuratKat" class="w-full text-xs p-2.5 rounded-xl border border-slate-200"></div>
+                                <div class="space-y-1 sm:col-span-2"><label class="text-[9px] font-bold text-slate-500 uppercase">Persyaratan</label><textarea id="formSuratSyarat" rows="2" class="w-full text-xs p-2.5 rounded-xl border border-slate-200"></textarea></div>
+                                <div class="space-y-1 sm:col-span-2"><label class="text-[9px] font-bold text-slate-500 uppercase">Alur Pengurusan</label><textarea id="formSuratAlur" rows="2" class="w-full text-xs p-2.5 rounded-xl border border-slate-200"></textarea></div>
+                                <div class="space-y-1"><label class="text-[9px] font-bold text-slate-500 uppercase">Estimasi Waktu</label><input type="text" id="formSuratWaktu" placeholder="1 Hari Kerja" class="w-full text-xs p-2.5 rounded-xl border border-slate-200"></div>
+                                <div class="space-y-1 flex items-end"><button onclick="tambahSuratAdmin()" class="w-full py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-bold">Simpan Surat</button></div>
                             </div>
-                            
-                            <div class="space-y-2">
-                                <h5 class="text-xs font-black text-slate-500 uppercase">Daftar Layanan Aktif</h5>
-                                <div id="adminListSurat" class="divide-y border rounded-2xl overflow-hidden">
-                                    <!-- Terisi Dinamis -->
-                                </div>
-                            </div>
+                            <div id="adminListSurat" class="divide-y border rounded-2xl overflow-hidden"></div>
                         </div>
 
-                        <!-- 3. Admin Kelola Berita -->
+                        <!-- Berita Form -->
                         <div id="adm-sec-berita" class="hidden bg-white p-6 rounded-3xl border border-slate-200 shadow-sm space-y-4">
-                            <h4 class="text-sm font-black text-slate-800 border-b pb-2 flex items-center gap-1.5"><i data-lucide="newspaper" class="w-4 h-4 text-customGreen-500"></i> Buat & Terbitkan Berita Baru</h4>
+                            <h4 class="text-sm font-black text-slate-800 border-b pb-2 flex items-center gap-1.5"><i data-lucide="newspaper" class="w-4 h-4 text-customGreen-500"></i> Terbitkan Berita Baru</h4>
                             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 bg-slate-50 p-4 rounded-2xl border border-slate-100">
-                                <div class="space-y-1 sm:col-span-2">
-                                    <label class="text-[9px] font-bold text-slate-500 uppercase">Judul Berita</label>
-                                    <input type="text" id="formBeritaJudul" placeholder="Tulis judul berita menarik..." class="w-full text-xs p-2.5 rounded-xl border border-slate-200">
-                                </div>
-                                <div class="space-y-1">
-                                    <label class="text-[9px] font-bold text-slate-500 uppercase">Kategori Berita</label>
-                                    <input type="text" id="formBeritaKat" placeholder="Contoh: Kegiatan Warga, Pembangunan" class="w-full text-xs p-2.5 rounded-xl border border-slate-200">
-                                </div>
-                                <div class="space-y-1">
-                                    <label class="text-[9px] font-bold text-slate-500 uppercase">Upload Foto Berita (Maks 1.5MB)</label>
-                                    <div class="flex items-center gap-3">
-                                        <input type="file" id="formBeritaImg" accept="image/*" class="w-full text-xs p-1.5 rounded-xl border border-slate-200 file:mr-3 file:py-1 file:px-2.5 file:rounded-lg file:border-0 file:text-[10px] file:font-bold file:bg-customGreen-50 file:text-customGreen-700 hover:file:bg-customGreen-100">
-                                        <img id="prevBeritaImg" class="w-10 h-10 object-cover rounded-lg border hidden shadow-inner">
-                                    </div>
-                                </div>
-                                <div class="space-y-1 sm:col-span-2">
-                                    <label class="text-[9px] font-bold text-slate-500 uppercase">Isi / Detail Berita Lengkap</label>
-                                    <textarea id="formBeritaIsi" rows="4" placeholder="Tuliskan peristiwa atau pengumuman secara rinci..." class="w-full text-xs p-2.5 rounded-xl border border-slate-200"></textarea>
-                                </div>
-                                <div class="sm:col-span-2 flex justify-end">
-                                    <button onclick="terbitBeritaAdmin()" class="px-5 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-bold shadow-sm">Terbitkan Kabar Berita</button>
-                                </div>
+                                <div class="space-y-1 sm:col-span-2"><label class="text-[9px] font-bold text-slate-500 uppercase">Judul Berita</label><input type="text" id="formBeritaJudul" class="w-full text-xs p-2.5 rounded-xl border border-slate-200"></div>
+                                <div class="space-y-1"><label class="text-[9px] font-bold text-slate-500 uppercase">Kategori</label><input type="text" id="formBeritaKat" class="w-full text-xs p-2.5 rounded-xl border border-slate-200"></div>
+                                <div class="space-y-1"><label class="text-[9px] font-bold text-slate-500 uppercase">Upload Foto Berita</label><input type="file" id="formBeritaImg" accept="image/*" class="w-full text-xs p-1.5 rounded-xl border border-slate-200"></div>
+                                <div class="space-y-1 sm:col-span-2"><label class="text-[9px] font-bold text-slate-500 uppercase">Isi Berita</label><textarea id="formBeritaIsi" rows="3" class="w-full text-xs p-2.5 rounded-xl border border-slate-200"></textarea></div>
+                                <div class="sm:col-span-2 flex justify-end"><button onclick="terbitBeritaAdmin()" class="px-5 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-bold">Terbitkan Berita</button></div>
                             </div>
-
-                            <div class="space-y-2">
-                                <h5 class="text-xs font-black text-slate-500 uppercase">Daftar Berita Terbit</h5>
-                                <div id="adminListBerita" class="divide-y border rounded-2xl overflow-hidden">
-                                    <!-- Terisi Dinamis -->
-                                </div>
-                            </div>
+                            <div id="adminListBerita" class="divide-y border rounded-2xl overflow-hidden"></div>
                         </div>
 
-                        <!-- 4. Admin Kelola Pembangunan -->
+                        <!-- Pembangunan Form -->
                         <div id="adm-sec-pembangunan" class="hidden bg-white p-6 rounded-3xl border border-slate-200 shadow-sm space-y-4">
-                            <h4 class="text-sm font-black text-slate-800 border-b pb-2 flex items-center gap-1.5"><i data-lucide="activity" class="w-4 h-4 text-customGreen-500"></i> Manajemen Progres Pembangunan</h4>
+                            <h4 class="text-sm font-black text-slate-800 border-b pb-2 flex items-center gap-1.5"><i data-lucide="activity" class="w-4 h-4 text-customGreen-500"></i> Progres Pembangunan</h4>
                             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 bg-slate-50 p-4 rounded-2xl border border-slate-100">
-                                <div class="space-y-1">
-                                    <label class="text-[9px] font-bold text-slate-500 uppercase">Nama Proyek / Infrastruktur</label>
-                                    <input type="text" id="formPemNama" placeholder="Contoh: Semenisasi Gang Merpati" class="w-full text-xs p-2.5 rounded-xl border border-slate-200">
-                                </div>
-                                <div class="space-y-1">
-                                    <label class="text-[9px] font-bold text-slate-500 uppercase">Sumber Anggaran / Kategori</label>
-                                    <input type="text" id="formPemKat" placeholder="Contoh: APBD Kelurahan 2026" class="w-full text-xs p-2.5 rounded-xl border border-slate-200">
-                                </div>
-                                <div class="space-y-1">
-                                    <label class="text-[9px] font-bold text-slate-500 uppercase">Lokasi / Sektor</label>
-                                    <input type="text" id="formPemLokasi" placeholder="Contoh: RW 04 Batu Lappa" class="w-full text-xs p-2.5 rounded-xl border border-slate-200">
-                                </div>
-                                <div class="space-y-1">
-                                    <label class="text-[9px] font-bold text-slate-500 uppercase">Progres Kerja (%)</label>
-                                    <input type="number" id="formPemPersen" min="0" max="100" placeholder="Contoh: 75" class="w-full text-xs p-2.5 rounded-xl border border-slate-200">
-                                </div>
-                                <div class="space-y-1 sm:col-span-2">
-                                    <label class="text-[9px] font-bold text-slate-500 uppercase">Upload Foto Progres Proyek (Maks 1.5MB)</label>
-                                    <div class="flex items-center gap-3">
-                                        <input type="file" id="formPemImg" accept="image/*" class="w-full text-xs p-1.5 rounded-xl border border-slate-200 file:mr-3 file:py-1 file:px-2.5 file:rounded-lg file:border-0 file:text-[10px] file:font-bold file:bg-customGreen-50 file:text-customGreen-700 hover:file:bg-customGreen-100">
-                                        <img id="prevPemImg" class="w-10 h-10 object-cover rounded-lg border hidden shadow-inner">
-                                    </div>
-                                </div>
-                                <div class="sm:col-span-2 flex justify-end">
-                                    <button onclick="tambahPembangunanAdmin()" class="px-5 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-bold shadow-sm">Simpan Progres Pembangunan</button>
-                                </div>
+                                <div class="space-y-1"><label class="text-[9px] font-bold text-slate-500 uppercase">Nama Proyek</label><input type="text" id="formPemNama" class="w-full text-xs p-2.5 rounded-xl border border-slate-200"></div>
+                                <div class="space-y-1"><label class="text-[9px] font-bold text-slate-500 uppercase">Sumber Anggaran</label><input type="text" id="formPemKat" class="w-full text-xs p-2.5 rounded-xl border border-slate-200"></div>
+                                <div class="space-y-1"><label class="text-[9px] font-bold text-slate-500 uppercase">Lokasi</label><input type="text" id="formPemLokasi" class="w-full text-xs p-2.5 rounded-xl border border-slate-200"></div>
+                                <div class="space-y-1"><label class="text-[9px] font-bold text-slate-500 uppercase">Progres (%)</label><input type="number" id="formPemPersen" class="w-full text-xs p-2.5 rounded-xl border border-slate-200"></div>
+                                <div class="space-y-1 sm:col-span-2"><label class="text-[9px] font-bold text-slate-500 uppercase">Upload Foto Progres</label><input type="file" id="formPemImg" accept="image/*" class="w-full text-xs p-1.5 rounded-xl border border-slate-200"></div>
+                                <div class="sm:col-span-2 flex justify-end"><button onclick="tambahPembangunanAdmin()" class="px-5 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-bold">Simpan Progres</button></div>
                             </div>
-
-                            <div class="space-y-2">
-                                <h5 class="text-xs font-black text-slate-500 uppercase">Daftar Progres Aktif</h5>
-                                <div id="adminListPem" class="divide-y border rounded-2xl overflow-hidden">
-                                    <!-- Terisi Dinamis -->
-                                </div>
-                            </div>
+                            <div id="adminListPem" class="divide-y border rounded-2xl overflow-hidden"></div>
                         </div>
 
-                        <!-- 5. Admin List Pengaduan -->
+                        <!-- Pengaduan List -->
                         <div id="adm-sec-pengaduan" class="hidden bg-white p-6 rounded-3xl border border-slate-200 shadow-sm space-y-4">
                             <div class="flex justify-between items-center border-b pb-2">
-                                <h4 class="text-sm font-black text-slate-800 flex items-center gap-1.5"><i data-lucide="inbox" class="w-4 h-4 text-customGreen-500"></i> Laporan Pengaduan Masuk (Google Form + Web)</h4>
+                                <h4 class="text-sm font-black text-slate-800 flex items-center gap-1.5"><i data-lucide="inbox" class="w-4 h-4 text-customGreen-500"></i> Laporan Pengaduan Masuk</h4>
                                 <button onclick="bersihkanSemuaAduan()" class="text-[10px] font-bold text-red-600 hover:underline">Hapus Semua</button>
                             </div>
-                            <div id="adminListAduan" class="space-y-3 max-h-[500px] overflow-y-auto pr-2">
-                                <!-- Kosong / Terisi Dinamis -->
-                            </div>
+                            <div id="adminListAduan" class="space-y-3 max-h-[500px] overflow-y-auto pr-2"></div>
                         </div>
                     </div>
                 </div>
@@ -641,13 +521,11 @@
         </div>
     </main>
 
-    <!-- ================= PANEL NOTIFIKASI TOAST DEDIKASI ================= -->
     <div id="panelToast" class="fixed bottom-6 right-6 z-[200] max-w-sm bg-slate-900 text-white text-xs px-4 py-3 rounded-2xl shadow-2xl border border-slate-800 flex items-center gap-2.5 transition-all duration-300 transform translate-y-20 opacity-0 pointer-events-none">
         <i data-lucide="info" class="w-4 h-4 text-amber-400" id="toastIkon"></i>
-        <span id="toastTeks">Pesan notifikasi berhasil dimuat!</span>
+        <span id="toastTeks">Pesan notifikasi dimuat!</span>
     </div>
 
-    <!-- ================= FOOTER UTAMA ================= -->
     <footer class="bg-customGreen-900 text-white/70 py-4 border-t border-customGreen-850 flex-none text-center">
         <div class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-2 text-xs">
             <div>© 2026 Pemerintah Kabupaten Enrekang - Kelurahan Batu Lappa.</div>
@@ -655,133 +533,97 @@
         </div>
     </footer>
 
-    <!-- ================= LOGIKA JAVASCRIPT & DATABASE LOKAL ================= -->
+    <!-- LOGIKA SCRIPT INTEGRASI CLOUDINARY + GOOGLE SHEET -->
     <script>
         // =========================================================================
-        // PASTAKAN URL GOOGLE APPS SCRIPT KAMU DI DALAM TANDA KUTIP DI BAWAH INI:
+        // KUNCI INTEGRASI UTAMA (GANTI DENGAN KUNCI CLOUDINARY KAMU):
         // =========================================================================
+        const CLOUDINARY_CLOUD_NAME = "q5nx4lxu";       // Contoh: "batulappa"
+        const CLOUDINARY_UPLOAD_PRESET = "preset_batulappa";         // Contoh: "preset_batulappa"
         const GOOGLE_SCRIPT_URL = "PASANG_URL_WEB_APP_GOOGLE_KAMU_DI_SINI";
 
-        // DATA DEFAULT
         const defaultProfil = {
             nama: "KELURAHAN BATU LAPPA",
             lurah: "M. AMIN, S.Sos",
             desc: "Mewujudkan pelayanan prima yang transparan, tata kelola administrasi responsif, dan pembangunan berkelanjutan bagi seluruh warga.",
             fotoLatar: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=1200&auto=format&fit=crop",
             fotoStruktur: "https://images.unsplash.com/photo-1531538606174-0f90ff5dce83?q=80&w=800&auto=format&fit=crop",
-            penduduk: "4.738",
-            kk: "1.284",
-            laki: "2.312",
-            perempuan: "2.426"
+            penduduk: "4.738", kk: "1.284", laki: "2.312", perempuan: "2.426"
         };
 
         const defaultSurat = [
-            {
-                id: 1,
-                judul: "Surat Pengantar RT / RW",
-                kategori: "Administrasi Kependudukan",
-                syarat: "- Kartu Keluarga (Asli & Fotokopi)\n- KTP Pemohon\n- Surat Pengantar lama jika perpanjangan",
-                alur: "1. Warga meminta formulir pengantar di Ketua RT\n2. RT menandatangani dan meneruskannya ke RW\n3. Bawa surat bertanda tangan RT/RW ke Kelurahan untuk verifikasi akhir",
-                estimasi: "1 Hari Kerja"
-            },
-            {
-                id: 2,
-                judul: "Surat Keterangan Usaha (SKU)",
-                kategori: "Perekonomian & UKM",
-                syarat: "- Fotokopi KTP & Kartu Keluarga Pemilik Usaha\n- Surat Pengantar RT/RW\n- Foto tempat usaha / produk jualan",
-                alur: "1. Bawa berkas dan surat pengantar RT/RW ke kantor Kelurahan\n2. Petugas melakukan peninjauan administrasi\n3. Penandatanganan SKU oleh Lurah Batu Lappa",
-                estimasi: "1 Hari Kerja"
-            },
-            {
-                id: 3,
-                judul: "Surat Keterangan Tidak Mampu (SKTM)",
-                kategori: "Bantuan Sosial & Pendidikan",
-                syarat: "- Surat Pengantar RT/RW\n- Kartu Keluarga (KK) & KTP Pemohon (Asli & Fotokopi)\n- Surat Pernyataan Miskin bermaterai",
-                alur: "1. Ambil rekomendasi pengantar RT dan tanda tangan RW\n2. Serahkan dokumen lengkap ke loket Kelurahan\n3. Verifikasi kualifikasi keluarga miskin oleh seksi Kesejahteraan Rakyat",
-                estimasi: "1 Hari Kerja"
-            }
+            { id: 1, judul: "Surat Pengantar RT / RW", kategori: "Kependudukan", syarat: "- KK\n- KTP", alur: "1. Ke RT/RW\n2. Ke Kelurahan", estimasi: "1 Hari Kerja" }
         ];
-
         const defaultBerita = [
-            {
-                id: 1,
-                judul: "Rapat Koordinasi Musrenbang Kelurahan Batu Lappa Sukses Digelar",
-                kategori: "Kegiatan Kelurahan",
-                img: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=800&auto=format&fit=crop",
-                tanggal: "12 Juli 2026",
-                isi: "Seluruh elemen masyarakat, tokoh pemuda, dan kepala lingkungan menghadiri Musyawarah Rencana Pembangunan (Musrenbang) di aula kantor kelurahan untuk menyelaraskan prioritas pembangunan fisik dan ekonomi."
-            },
-            {
-                id: 2,
-                judul: "Kerja Bakti Masif Antisipasi Musim Hujan dan Banjir Saluran Air",
-                kategori: "Gotong Royong",
-                img: "https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?q=80&w=800&auto=format&fit=crop",
-                tanggal: "05 Juli 2026",
-                isi: "Pemerintah Kelurahan memobilisasi warga lingkungan Batu Lappa untuk membersihkan tumpukan sampah di aliran parit utama demi mencegah genangan air saat hujan deras melanda."
-            }
+            { id: 1, judul: "Musrenbang Kelurahan Batu Lappa Sukses Digelar", kategori: "Kegiatan", img: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=800", tanggal: "12 Juli 2026", isi: "Seluruh elemen masyarakat menghadiri Musrenbang." }
         ];
-
         const defaultPembangunan = [
-            {
-                id: 1,
-                nama: "Pelebaran & Semenisasi Jalan Tani Batu Lappa",
-                kategori: "APBD Kabupaten Enrekang 2026",
-                lokasi: "Lingkungan Batu Lappa Tengah",
-                persen: 85,
-                img: "https://images.unsplash.com/photo-1590069261209-f8e9b8642343?q=80&w=800&auto=format&fit=crop"
-            },
-            {
-                id: 2,
-                nama: "Pemasangan Penerangan Jalan Umum (PJU) Energi Surya",
-                kategori: "Dana Kelurahan Tahap I",
-                lokasi: "Seluruh Area Penghubung Dusun",
-                persen: 100,
-                img: "https://images.unsplash.com/photo-1509391366360-2e959784a276?q=80&w=800&auto=format&fit=crop"
-            }
+            { id: 1, nama: "Semenisasi Jalan Tani", kategori: "APBD 2026", lokasi: "Batu Lappa Tengah", persen: 85, img: "https://images.unsplash.com/photo-1590069261209-f8e9b8642343?q=80&w=800" }
         ];
 
-        // Inisialisasi Penyimpanan
         let dbProfil = JSON.parse(localStorage.getItem('bl_profil')) || defaultProfil;
         let dbSurat = JSON.parse(localStorage.getItem('bl_surat')) || defaultSurat;
         let dbBerita = JSON.parse(localStorage.getItem('bl_berita')) || defaultBerita;
         let dbPembangunan = JSON.parse(localStorage.getItem('bl_pembangunan')) || defaultPembangunan;
         let dbPengaduan = JSON.parse(localStorage.getItem('bl_pengaduan')) || [];
 
-        // Penampung sementara untuk Base64 gambar baru
-        let tempFotoLatar = "";
-        let tempFotoStruktur = "";
-        let tempBeritaImg = "";
-        let tempPemImg = "";
-
-        // INSIALISASI WEBSITE saat pertama dimuat
         window.addEventListener('DOMContentLoaded', () => {
             perbaruiSemuaData();
             updateWaktu();
             setInterval(updateWaktu, 1000);
-            
-            // Konfigurasi File Upload
-            setupFileUploader('inpFotoLatar', 'prevFotoLatar', (b64) => { tempFotoLatar = b64; });
-            setupFileUploader('inpFotoStruktur', 'prevFotoStruktur', (b64) => { tempFotoStruktur = b64; });
-            setupFileUploader('formBeritaImg', 'prevBeritaImg', (b64) => { tempBeritaImg = b64; });
-            setupFileUploader('formPemImg', 'prevPemImg', (b64) => { tempPemImg = b64; });
-
-            // Tarik data pengaduan dari Google Form (jika URL terpasang)
             muatAduanDariGoogleForm();
-
             lucide.createIcons();
             
             if(sessionStorage.getItem('session_admin') === 'true') {
                 aktifkanModeAdmin();
+            } else {
+                document.getElementById('tab-panel-admin').classList.add('hidden');
             }
         });
 
-        // FUNGSI NARIK DATA INTEGRASI GOOGLE FORM
+        // FUNGSI UPLOAD GAMBAR LANGSUNG KE CLOUD (PUBLIC)
+        async function uploadGambarKeCloud(fileInputEl) {
+            const file = fileInputEl.files[0];
+            if (!file) return null;
+
+            if (CLOUDINARY_CLOUD_NAME === "NAMA_CLOUD_KAMU") {
+                tampilToast('Peringatan: Cloudinary belum diatur, menggunakan file lokal.', 'info');
+                return new Promise((resolve) => {
+                    const reader = new FileReader();
+                    reader.onload = (e) => resolve(e.target.result);
+                    reader.readAsDataURL(file);
+                });
+            }
+
+            tampilToast('Sedang mengunggah foto ke server cloud publik...', 'info');
+
+            const formData = new FormData();
+            formData.append('file', file);
+            formData.append('upload_preset', CLOUDINARY_UPLOAD_PRESET);
+
+            try {
+                const res = await fetch(`https://api.cloudinary.com/v1_1/${CLOUDINARY_CLOUD_NAME}/image/upload`, {
+                    method: 'POST',
+                    body: formData
+                });
+                const data = await res.json();
+                if (data.secure_url) {
+                    tampilToast('Foto berhasil terunggah secara publik!', 'success');
+                    return data.secure_url;
+                } else {
+                    throw new Error('Gagal upload');
+                }
+            } catch (err) {
+                tampilToast('Gagal upload foto, pastikan koneksi internet stabil.', 'error');
+                return null;
+            }
+        }
+
         async function muatAduanDariGoogleForm() {
             if (!GOOGLE_SCRIPT_URL || GOOGLE_SCRIPT_URL.includes("PASANG_URL_WEB_APP")) return;
             try {
                 const respon = await fetch(GOOGLE_SCRIPT_URL);
                 const dataAduanSheet = await respon.json();
-                
                 if (Array.isArray(dataAduanSheet) && dataAduanSheet.length > 0) {
                     dbPengaduan = dataAduanSheet;
                     localStorage.setItem('bl_pengaduan', JSON.stringify(dbPengaduan));
@@ -793,37 +635,6 @@
             }
         }
 
-        // READ FILE BASE64 (UPLOAD LANGSUNG)
-        function setupFileUploader(inputId, previewId, callback) {
-            const inputEl = document.getElementById(inputId);
-            if (!inputEl) return;
-
-            inputEl.addEventListener('change', function(e) {
-                const file = e.target.files[0];
-                if (file) {
-                    if (file.size > 1.5 * 1024 * 1024) {
-                        tampilToast('File terlalu besar! Batas maksimal adalah 1.5MB.', 'error');
-                        this.value = '';
-                        return;
-                    }
-
-                    const reader = new FileReader();
-                    reader.onload = function(evt) {
-                        const base64String = evt.target.result;
-                        const previewEl = document.getElementById(previewId);
-                        
-                        if (previewEl) {
-                            previewEl.src = base64String;
-                            previewEl.classList.remove('hidden');
-                        }
-                        callback(base64String);
-                    };
-                    reader.readAsDataURL(file);
-                }
-            });
-        }
-
-        // JAM & WAKTU
         function updateWaktu() {
             const sekarang = new Date();
             const opsiWaktu = { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false, timeZone: 'Asia/Makassar' };
@@ -841,8 +652,13 @@
             document.getElementById('greetingWaktu').innerText = ucapan;
         }
 
-        // NAVIGASI TAB UTAMA
         function gantiTab(tabId) {
+            if (tabId === 'panel-admin' && sessionStorage.getItem('session_admin') !== 'true') {
+                tampilToast('Akses ditolak! Silakan login Admin terlebih dahulu.', 'error');
+                bukaModalLogin();
+                return;
+            }
+
             document.getElementById('mobileMenu').classList.add('hidden');
             
             const sections = ['beranda', 'profil', 'berita', 'pembangunan', 'panel-admin'];
@@ -851,13 +667,9 @@
                 if (el) el.classList.add('hidden');
                 
                 const btnDesk = document.getElementById('btn-tab-' + sec);
-                if(btnDesk) {
-                    btnDesk.className = "px-3.5 py-2 rounded-lg text-xs font-bold transition-all hover:bg-white/10 text-customCream-100";
-                }
+                if(btnDesk) btnDesk.className = "px-3.5 py-2 rounded-lg text-xs font-bold transition-all hover:bg-white/10 text-customCream-100";
                 const btnMob = document.getElementById('btn-tab-mob-' + sec);
-                if(btnMob) {
-                    btnMob.className = "w-full text-left px-4 py-3 rounded-xl text-sm font-bold transition-all text-customCream-100 flex items-center gap-2.5";
-                }
+                if(btnMob) btnMob.className = "w-full text-left px-4 py-3 rounded-xl text-sm font-bold transition-all text-customCream-100 flex items-center gap-2.5";
             });
 
             const activeSec = document.getElementById('tab-' + tabId);
@@ -882,9 +694,7 @@
             }
         }
 
-        function toggleMobileMenu() {
-            document.getElementById('mobileMenu').classList.toggle('hidden');
-        }
+        function toggleMobileMenu() { document.getElementById('mobileMenu').classList.toggle('hidden'); }
 
         function tampilToast(teks, tipe = 'info') {
             const toast = document.getElementById('panelToast');
@@ -906,13 +716,9 @@
             
             lucide.createIcons();
             toast.classList.remove('translate-y-20', 'opacity-0', 'pointer-events-none');
-            
-            setTimeout(() => {
-                toast.classList.add('translate-y-20', 'opacity-0', 'pointer-events-none');
-            }, 3000);
+            setTimeout(() => { toast.classList.add('translate-y-20', 'opacity-0', 'pointer-events-none'); }, 3000);
         }
 
-        // SINKRONISASI DATA
         function perbaruiSemuaData() {
             document.getElementById('navNamaKelurahan').innerText = dbProfil.nama;
             document.getElementById('txtHeroNama').innerText = dbProfil.nama;
@@ -927,7 +733,6 @@
             document.getElementById('txtLaki').innerText = dbProfil.laki;
             document.getElementById('txtPerempuan').innerText = dbProfil.perempuan;
 
-            // RENDER SURAT
             const kontainerSurat = document.getElementById('kontainer-layanan-surat');
             kontainerSurat.innerHTML = '';
             dbSurat.forEach((surat, indeks) => {
@@ -944,7 +749,6 @@
                 `;
             });
 
-            // RENDER BERITA
             const kontainerBerita = document.getElementById('kontainer-berita');
             kontainerBerita.innerHTML = '';
             dbBerita.forEach(berita => {
@@ -965,7 +769,6 @@
                 `;
             });
 
-            // RENDER PEMBANGUNAN
             const kontainerPem = document.getElementById('kontainer-pembangunan');
             kontainerPem.innerHTML = '';
             dbPembangunan.forEach(pem => {
@@ -995,7 +798,6 @@
                 `;
             });
 
-            // Counter Badge
             const badge = document.getElementById('badgeAduan');
             if(dbPengaduan.length > 0) {
                 badge.innerText = dbPengaduan.length;
@@ -1004,7 +806,6 @@
                 badge.classList.add('hidden');
             }
 
-            // Sync Input Form Admin
             document.getElementById('inpNamaKel').value = dbProfil.nama;
             document.getElementById('inpNamaLurah').value = dbProfil.lurah;
             document.getElementById('inpDesc').value = dbProfil.desc;
@@ -1012,15 +813,6 @@
             document.getElementById('inpKK').value = dbProfil.kk;
             document.getElementById('inpLaki').value = dbProfil.laki;
             document.getElementById('inpPerempuan').value = dbProfil.perempuan;
-
-            if (dbProfil.fotoLatar) {
-                document.getElementById('prevFotoLatar').src = dbProfil.fotoLatar;
-                document.getElementById('prevFotoLatar').classList.remove('hidden');
-            }
-            if (dbProfil.fotoStruktur) {
-                document.getElementById('prevFotoStruktur').src = dbProfil.fotoStruktur;
-                document.getElementById('prevFotoStruktur').classList.remove('hidden');
-            }
 
             lucide.createIcons();
         }
@@ -1035,11 +827,8 @@
             document.getElementById('modalSyaratSurat').classList.remove('hidden');
         }
 
-        function tutupModalSyarat() {
-            document.getElementById('modalSyaratSurat').classList.add('hidden');
-        }
+        function tutupModalSyarat() { document.getElementById('modalSyaratSurat').classList.add('hidden'); }
 
-        // KIRIM PENGADUAN WARGA VIA WEBSITE
         function kirimPengaduanPublik() {
             const nama = document.getElementById('aduanNama').value.trim() || 'Anonim';
             const kontak = document.getElementById('aduanKontak').value.trim();
@@ -1053,10 +842,7 @@
 
             const aduanBaru = {
                 id: Date.now(),
-                nama,
-                kontak,
-                kategori,
-                isi,
+                nama, kontak, kategori, isi,
                 tanggal: new Date().toLocaleDateString('id-ID', { day: 'numeric', month: 'short', year: 'numeric' })
             };
 
@@ -1064,7 +850,6 @@
             localStorage.setItem('bl_pengaduan', JSON.stringify(dbPengaduan));
             
             tampilToast('Laporan Anda berhasil dikirim ke Admin Kelurahan!', 'success');
-            
             document.getElementById('aduanNama').value = '';
             document.getElementById('aduanKontak').value = '';
             document.getElementById('aduanIsi').value = '';
@@ -1073,7 +858,6 @@
             renderListAduanAdmin();
         }
 
-        // AUTH ADMIN
         function bukaModalLogin() { document.getElementById('modalLogin').classList.remove('hidden'); }
         function tutupModalLogin() {
             document.getElementById('modalLogin').classList.add('hidden');
@@ -1136,7 +920,28 @@
             renderListAduanAdmin();
         }
 
-        function simpanProfilAdmin() {
+        // AKSI SIMPAN PROFIL OPERATOR (TERMASUK UPLOAD FOTO AUTO CLOUD)
+        async function simpanProfilAdmin() {
+            const btn = document.getElementById('btnSimpanProfil');
+            btn.disabled = true;
+            btn.innerText = "Mengunggah Gambar & Menyimpan...";
+
+            const fileLatarInput = document.getElementById('inpFotoLatar');
+            const fileStrukturInput = document.getElementById('inpFotoStruktur');
+
+            let urlLatar = dbProfil.fotoLatar;
+            let urlStruktur = dbProfil.fotoStruktur;
+
+            if (fileLatarInput.files.length > 0) {
+                const resLatar = await uploadGambarKeCloud(fileLatarInput);
+                if (resLatar) urlLatar = resLatar;
+            }
+
+            if (fileStrukturInput.files.length > 0) {
+                const resStruktur = await uploadGambarKeCloud(fileStrukturInput);
+                if (resStruktur) urlStruktur = resStruktur;
+            }
+
             dbProfil.nama = document.getElementById('inpNamaKel').value.trim();
             dbProfil.lurah = document.getElementById('inpNamaLurah').value.trim();
             dbProfil.desc = document.getElementById('inpDesc').value.trim();
@@ -1144,18 +949,15 @@
             dbProfil.kk = document.getElementById('inpKK').value.trim();
             dbProfil.laki = document.getElementById('inpLaki').value.trim();
             dbProfil.perempuan = document.getElementById('inpPerempuan').value.trim();
-
-            if (tempFotoLatar) dbProfil.fotoLatar = tempFotoLatar;
-            if (tempFotoStruktur) dbProfil.fotoStruktur = tempFotoStruktur;
+            dbProfil.fotoLatar = urlLatar;
+            dbProfil.fotoStruktur = urlStruktur;
 
             localStorage.setItem('bl_profil', JSON.stringify(dbProfil));
-            tampilToast('Profil & statistik kelurahan berhasil diperbarui!', 'success');
             
-            document.getElementById('inpFotoLatar').value = '';
-            document.getElementById('inpFotoStruktur').value = '';
-            tempFotoLatar = "";
-            tempFotoStruktur = "";
+            btn.disabled = false;
+            btn.innerText = "Simpan Perubahan Publik";
 
+            tampilToast('Perubahan profil & foto publik berhasil disimpan!', 'success');
             perbaruiSemuaData();
         }
 
@@ -1165,11 +967,8 @@
             dbSurat.forEach(s => {
                 list.innerHTML += `
                     <div class="p-3 text-xs flex justify-between items-center bg-white hover:bg-slate-50">
-                        <div>
-                            <p class="font-bold text-slate-800">${s.judul}</p>
-                            <span class="text-[10px] text-slate-400">${s.kategori} | Estimasi: ${s.estimasi}</span>
-                        </div>
-                        <button onclick="hapusSuratAdmin(${s.id})" class="p-1.5 text-red-600 hover:bg-red-50 rounded-lg transition-colors"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
+                        <div><p class="font-bold text-slate-800">${s.judul}</p><span class="text-[10px] text-slate-400">${s.kategori} | Estimasi: ${s.estimasi}</span></div>
+                        <button onclick="hapusSuratAdmin(${s.id})" class="p-1.5 text-red-600 hover:bg-red-50 rounded-lg"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
                     </div>
                 `;
             });
@@ -1197,7 +996,7 @@
             document.getElementById('formSuratSyarat').value = '';
             document.getElementById('formSuratAlur').value = '';
             
-            tampilToast('Syarat pengurusan surat berhasil disimpan!', 'success');
+            tampilToast('Surat berhasil disimpan!', 'success');
             perbaruiSemuaData();
             renderListSuratAdmin();
         }
@@ -1216,10 +1015,7 @@
             dbBerita.forEach(b => {
                 list.innerHTML += `
                     <div class="p-3 text-xs flex justify-between items-center bg-white hover:bg-slate-50">
-                        <div>
-                            <p class="font-bold text-slate-800 line-clamp-1">${b.judul}</p>
-                            <span class="text-[10px] text-slate-400">${b.kategori} | ${b.tanggal}</span>
-                        </div>
+                        <div><p class="font-bold text-slate-800 line-clamp-1">${b.judul}</p><span class="text-[10px] text-slate-400">${b.kategori} | ${b.tanggal}</span></div>
                         <button onclick="hapusBeritaAdmin(${b.id})" class="p-1.5 text-red-600 hover:bg-red-50 rounded-lg"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
                     </div>
                 `;
@@ -1227,7 +1023,7 @@
             lucide.createIcons();
         }
 
-        function terbitBeritaAdmin() {
+        async function terbitBeritaAdmin() {
             const judul = document.getElementById('formBeritaJudul').value.trim();
             const kategori = document.getElementById('formBeritaKat').value.trim();
             const isi = document.getElementById('formBeritaIsi').value.trim();
@@ -1237,14 +1033,16 @@
                 return;
             }
 
-            const img = tempBeritaImg || 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=800';
+            const fileImgInput = document.getElementById('formBeritaImg');
+            let imgUrl = "https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=800";
+
+            if (fileImgInput.files.length > 0) {
+                const res = await uploadGambarKeCloud(fileImgInput);
+                if (res) imgUrl = res;
+            }
 
             const baru = {
-                id: Date.now(),
-                judul,
-                kategori,
-                img,
-                isi,
+                id: Date.now(), judul, kategori, img: imgUrl, isi,
                 tanggal: new Date().toLocaleDateString('id-ID', { day: 'numeric', month: 'short', year: 'numeric' })
             };
 
@@ -1254,11 +1052,9 @@
             document.getElementById('formBeritaJudul').value = '';
             document.getElementById('formBeritaKat').value = '';
             document.getElementById('formBeritaIsi').value = '';
-            document.getElementById('formBeritaImg').value = '';
-            document.getElementById('prevBeritaImg').classList.add('hidden');
-            tempBeritaImg = "";
+            fileImgInput.value = '';
 
-            tampilToast('Kabar berita berhasil dipublikasikan!', 'success');
+            tampilToast('Kabar berita berhasil diterbitkan!', 'success');
             perbaruiSemuaData();
             renderListBeritaAdmin();
         }
@@ -1277,10 +1073,7 @@
             dbPembangunan.forEach(p => {
                 list.innerHTML += `
                     <div class="p-3 text-xs flex justify-between items-center bg-white hover:bg-slate-50">
-                        <div>
-                            <p class="font-bold text-slate-800">${p.nama}</p>
-                            <span class="text-[10px] text-slate-400">${p.lokasi} | Progres: <b class="text-customGreen-600">${p.persen}%</b></span>
-                        </div>
+                        <div><p class="font-bold text-slate-800">${p.nama}</p><span class="text-[10px] text-slate-400">${p.lokasi} | Progres: <b class="text-customGreen-600">${p.persen}%</b></span></div>
                         <button onclick="hapusPembangunanAdmin(${p.id})" class="p-1.5 text-red-600 hover:bg-red-50 rounded-lg"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
                     </div>
                 `;
@@ -1288,7 +1081,7 @@
             lucide.createIcons();
         }
 
-        function tambahPembangunanAdmin() {
+        async function tambahPembangunanAdmin() {
             const nama = document.getElementById('formPemNama').value.trim();
             const kategori = document.getElementById('formPemKat').value.trim();
             const lokasi = document.getElementById('formPemLokasi').value.trim();
@@ -1299,9 +1092,15 @@
                 return;
             }
 
-            const img = tempPemImg || 'https://images.unsplash.com/photo-1590069261209-f8e9b8642343?q=80&w=800';
+            const fileImgInput = document.getElementById('formPemImg');
+            let imgUrl = "https://images.unsplash.com/photo-1590069261209-f8e9b8642343?q=80&w=800";
 
-            const baru = { id: Date.now(), nama, kategori, lokasi, persen, img };
+            if (fileImgInput.files.length > 0) {
+                const res = await uploadGambarKeCloud(fileImgInput);
+                if (res) imgUrl = res;
+            }
+
+            const baru = { id: Date.now(), nama, kategori, lokasi, persen, img: imgUrl };
             dbPembangunan.push(baru);
             localStorage.setItem('bl_pembangunan', JSON.stringify(dbPembangunan));
 
@@ -1309,11 +1108,9 @@
             document.getElementById('formPemKat').value = '';
             document.getElementById('formPemLokasi').value = '';
             document.getElementById('formPemPersen').value = '';
-            document.getElementById('formPemImg').value = '';
-            document.getElementById('prevPemImg').classList.add('hidden');
-            tempPemImg = "";
+            fileImgInput.value = '';
 
-            tampilToast('Progress pembangunan berhasil diperbarui!', 'success');
+            tampilToast('Progress pembangunan diperbarui!', 'success');
             perbaruiSemuaData();
             renderListPemAdmin();
         }
@@ -1334,7 +1131,7 @@
                 list.innerHTML = `
                     <div class="p-8 text-center text-slate-400 text-xs">
                         <i data-lucide="mail-open" class="w-10 h-10 mx-auto text-slate-300 mb-2"></i>
-                        Belum ada laporan pengaduan dari warga masuk saat ini.
+                        Belum ada laporan pengaduan masuk saat ini.
                     </div>
                 `;
                 lucide.createIcons();
